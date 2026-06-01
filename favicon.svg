@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DELIDEC favicon — d + the blinking block cursor, matching the wordmark logo -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="delidec">
+  <title>delidec</title>
+  <defs>
+    <linearGradient id="df" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#BCF6D8"/><stop offset="1" stop-color="#36C883"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="7" fill="#081F14"/>
+  <text x="5" y="23.6" font-family="'JetBrains Mono','Courier New',monospace" font-weight="800" font-size="25" fill="url(#df)">d</text>
+  <!-- block cursor — same proportions / hard blink as the .cur in the wordmark -->
+  <rect x="22" y="9.6" width="5.4" height="14" rx="0.7" fill="#4FE0A8">
+    <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.5;0.5;1" dur="1.1s" repeatCount="indefinite"/>
+  </rect>
+</svg>

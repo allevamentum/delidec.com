@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>DELIDEC OS — eight minds, one clear decision</title>
+<meta name="description" content="DELIDEC convenes eight specialist AI executives that analyze your decision independently. A synthesis layer unifies every perspective into one clear path — cited, governed, on the record. You make the final call." />
+<meta name="theme-color" content="#070F0C" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="canonical" href="https://delidec.com/" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="favicon.svg" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="DELIDEC OS — eight minds, one clear decision" />
+<meta property="og:description" content="Eight specialist AI executives deliberate independently; a synthesis layer unifies them into one clear path. You make the final call." />
+<meta property="og:url" content="https://delidec.com/" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+
+<!-- Plausible — privacy-friendly, cookieless analytics (no consent banner required). Domain must match the Plausible dashboard site. -->
+<script defer data-domain="delidec.com" src="https://plausible.io/js/script.outbound-links.js"></script>
+<script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)}</script>
+
+<style>
+/* ===========================================================
+   DELIDEC OS — multi-page study (SPA)
+   Display: Sora · UI: Space Grotesk · labels/logo: JetBrains Mono
+   One global tesseract behind everything, morphing per page.
+   No italics. Apple-grade page transitions.
+   =========================================================== */
+:root{
+  --bg:#EDF1EC; --bg-center:#F7F9F6; --bg-edge:#E1E7DF;
+  --surface:#FFFFFF; --surface-2:#F4F7F2;
+  --ink:#11201A; --ink-2:#2E3D36; --muted:#677A6F; --faint:#9AA89E;
+  --green-900:#0A3320; --green-800:#0F4A2B; --green-700:#13633A; --green-600:#1A7A48; --green-500:#229A57;
+  --glow:#46D88E;
+  --a-coo:#6DD8E0; --a-cfo:#4FE0A8; --a-cmo:#F2B547; --a-clo:#E07A7A;
+  --a-cto:#B098E5; --a-cso:#A8F0CC; --a-cpo:#FF9B7A; --a-chro:#E5D17A;
+  --line:rgba(16,42,30,.10); --line-2:rgba(16,42,30,.16); --line-3:rgba(16,42,30,.26);
+  --bp-minor:rgba(24,90,56,.03); --bp-major:rgba(24,90,56,.06);
+  --shadow:0 1px 2px rgba(14,40,28,.04), 0 14px 34px -18px rgba(14,55,36,.20);
+  --shadow-lift:0 2px 6px rgba(14,40,28,.06), 0 34px 64px -26px rgba(14,70,44,.30);
+  --display:'Sora',system-ui,sans-serif;
+  --sans:'Space Grotesk',system-ui,-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --maxw:1200px; --pad:clamp(20px,4.5vw,68px); --gap:clamp(72px,11vh,150px);
+  --ease:cubic-bezier(.16,1,.3,1); --spring:cubic-bezier(.34,1.3,.64,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+i,em,.accent{font-style:normal}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans); font-size:16px; line-height:1.6; color:var(--ink-2); overflow-x:hidden;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cpath d='M60 53v14M53 60h14' stroke='%23185A38' stroke-opacity='0.09' stroke-width='1'/%3E%3C/svg%3E") 0 0/120px 120px,
+    linear-gradient(var(--bp-major) 1px, transparent 1px) 0 0/120px 120px,
+    linear-gradient(90deg, var(--bp-major) 1px, transparent 1px) 0 0/120px 120px,
+    linear-gradient(var(--bp-minor) 1px, transparent 1px) 0 0/24px 24px,
+    linear-gradient(90deg, var(--bp-minor) 1px, transparent 1px) 0 0/24px 24px,
+    radial-gradient(130% 120% at 50% 30%, var(--bg-center) 0%, var(--bg) 56%, var(--bg-edge) 100%);
+  background-attachment:fixed;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+::selection{background:var(--glow);color:var(--green-900)}
+svg{display:block}
+
+h1,h2,h3,.display{font-family:var(--display);font-weight:600;color:var(--ink);letter-spacing:-0.03em;line-height:1.02}
+.kicker{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--green-600)}
+.accent{color:var(--green-600)}
+.tnum{font-variant-numeric:tabular-nums}
+
+/* ---- global tesseract + scrim (behind all content) ---- */
+#tess{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+#scrim{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(115% 80% at 50% 34%, rgba(238,241,236,.62), rgba(238,241,236,.16) 56%, rgba(238,241,236,0) 78%)}
+#progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:left;
+  background:linear-gradient(90deg,var(--green-500),var(--glow));box-shadow:0 0 10px var(--glow);z-index:200}
+
+/* ---- nav ---- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:90;display:flex;align-items:center;gap:24px;
+  padding:18px var(--pad);transition:padding .4s var(--ease),background .4s,box-shadow .4s,border-color .4s;border-bottom:1px solid transparent}
+.nav.shrink{padding:11px var(--pad);background:rgba(244,247,242,.8);backdrop-filter:blur(16px) saturate(150%);
+  -webkit-backdrop-filter:blur(16px) saturate(150%);border-bottom-color:var(--line);box-shadow:0 8px 30px -22px rgba(14,55,36,.4)}
+.brand{display:inline-flex;align-items:center;flex-shrink:0}
+.brand .wm{font-family:var(--mono);font-weight:700;font-size:19px;letter-spacing:-0.04em;color:var(--ink);display:inline-flex;align-items:center}
+.brand .cur{display:inline-block;width:9px;height:19px;margin-left:5px;border-radius:1px;background:var(--green-600);box-shadow:0 0 10px rgba(79,224,168,.5);animation:blink 1.1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.nav-links{display:flex;gap:2px;margin-left:10px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--ink-2);padding:9px 14px;border-radius:10px;transition:color .2s,background .2s;cursor:pointer}
+.nav-links a:hover{color:var(--green-700);background:rgba(26,122,72,.07)}
+.nav-links a.active{color:var(--green-700);background:rgba(26,122,72,.1)}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+.nav-signin{font-size:14px;font-weight:500;color:var(--ink-2);padding:11px 18px;border-radius:999px;transition:color .2s,background .2s;cursor:pointer}
+.nav-signin:hover{color:var(--green-700);background:rgba(26,122,72,.06)}
+@media(max-width:1080px){.nav-links{display:none}}
+@media(max-width:560px){.nav-signin{display:none}}
+
+/* ---- shell / view ---- */
+#view{position:relative;z-index:5;min-height:100vh;will-change:opacity,transform,filter}
+.section{position:relative;z-index:5;max-width:var(--maxw);margin:0 auto;padding:var(--gap) var(--pad)}
+.center{text-align:center}.center .lede{margin-left:auto;margin-right:auto}
+.h2{font-size:clamp(30px,4.6vw,54px)}.h3{font-size:clamp(20px,2.4vw,28px)}
+.lede{max-width:60ch;font-size:clamp(15px,1.3vw,18px);line-height:1.65;color:var(--muted)}
+.sec-head{margin-bottom:clamp(36px,5.5vw,60px)}.sec-head .kicker{display:block;margin-bottom:14px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:600;font-size:14px;border-radius:999px;padding:13px 22px;cursor:pointer;transition:transform .25s var(--spring),box-shadow .25s var(--ease),background .25s}
+.btn .ar{transition:transform .25s var(--spring)}.btn:hover .ar{transform:translateX(4px)}
+.btn-primary{background:linear-gradient(135deg,var(--green-700),var(--green-900));color:#EAF6EE;box-shadow:0 10px 26px -12px rgba(15,74,43,.6)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(15,74,43,.7)}
+.btn-ghost{background:var(--surface);color:var(--green-800);border:1px solid var(--line-2);box-shadow:var(--shadow)}
+.btn-ghost:hover{transform:translateY(-2px);border-color:var(--green-500);box-shadow:var(--shadow-lift)}
+.btn-lg{padding:16px 28px;font-size:15px}
+
+.rv{opacity:0;transform:translateY(20px);transition:opacity 1.3s var(--ease),transform 1.3s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.06s}.rv[data-d="2"]{transition-delay:.12s}.rv[data-d="3"]{transition-delay:.18s}.rv[data-d="4"]{transition-delay:.24s}
+
+/* ---- hero (home) — centered command console ---- */
+.hero{max-width:1000px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:clamp(120px,16vh,180px) var(--pad) clamp(56px,8vh,96px)}
+.hero .kicker{margin-bottom:20px}
+.hero h1{font-size:clamp(42px,6.6vw,90px);font-weight:700;line-height:.96;letter-spacing:-0.045em;max-width:15ch}
+.hero-lede{margin-top:22px;max-width:54ch;font-size:clamp(15px,1.3vw,18px);line-height:1.55;color:var(--ink-2)}
+.hero-lede b{color:var(--ink);font-weight:600}
+
+/* horizontal command console */
+.ask{margin-top:clamp(30px,4vw,46px);width:100%;max-width:920px}
+/* light old-computer monitor */
+.term{position:relative;border-radius:20px;text-align:left;padding:12px;
+  background:linear-gradient(180deg,#e5eae1,#cdd5ca);border:1px solid rgba(255,255,255,.7);
+  box-shadow:0 1px 0 rgba(255,255,255,.95) inset,0 -3px 8px rgba(14,55,36,.1) inset,0 28px 54px -28px rgba(14,55,36,.42)}
+.term-bar{display:flex;align-items:center;gap:7px;padding:4px 8px 10px}
+.term-bar .dot{width:9px;height:9px;border-radius:50%;box-shadow:0 0 0 1px rgba(0,0,0,.05)}
+.term-bar .dot.r{background:#E07A7A}.term-bar .dot.y{background:#E5D17A}.term-bar .dot.g{background:#3CC986}
+.term-title{margin-left:8px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7C918A}
+.term-body{position:relative;overflow:hidden;display:flex;align-items:center;gap:12px;padding:18px 18px;border-radius:11px;
+  background:linear-gradient(180deg,#eef4ea,#e4ebde);box-shadow:0 2px 7px rgba(14,55,36,.16) inset,0 0 0 1px rgba(14,55,36,.1) inset}
+.term-prompt{font-family:var(--mono);font-weight:700;font-size:18px;color:#13633A;text-shadow:0 0 6px rgba(34,154,87,.3)}
+.term-input{flex:1;min-width:0;background:transparent;border:none;outline:none;font-family:var(--mono);font-size:clamp(13px,1.2vw,15px);color:#0F4A2B;caret-color:#1A7A48}
+.term-input::placeholder{color:rgba(15,74,43,.5)}
+.term-send{flex-shrink:0;display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#06140E;background:linear-gradient(135deg,#46D88E,#1A7A48);padding:11px 16px;border-radius:9px;box-shadow:0 6px 16px -8px rgba(15,74,43,.6);transition:transform .2s var(--spring);position:relative;z-index:2}
+.term-send:hover{transform:translateY(-1px) scale(1.04)}.term-send .ar{transition:transform .2s var(--spring)}.term-send:hover .ar{transform:translateX(3px)}
+.term-body::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(14,55,36,.06) 0 1px,transparent 1px 3px);opacity:.7}
+.term-body::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(108deg,rgba(255,255,255,.55),transparent 32%);opacity:.6;animation:crtflicker 6s steps(48) infinite}
+@keyframes crtflicker{0%,100%{opacity:.5}48%{opacity:.6}50%{opacity:.42}52%{opacity:.58}}
+.ask-steps-h{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+@media(max-width:760px){.ask-steps-h{grid-template-columns:1fr}}
+.ask-step{display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:18px 18px 20px;border-radius:18px;text-align:left;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);transition:transform .35s var(--spring),box-shadow .35s,border-color .35s}
+.ask-step .si{width:30px;height:30px;margin-bottom:8px}.ask-step .si svg{width:100%;height:100%;color:var(--green-700)}
+.ask-step .num{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--green-600);letter-spacing:.12em}
+.ask-step h4{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--ink)}
+.ask-step p{font-size:12px;line-height:1.5;color:var(--muted)}
+.ask-step.lit .si{animation:pop .5s var(--spring)}
+@keyframes pop{0%{transform:scale(.7);opacity:.4}60%{transform:scale(1.12)}100%{transform:scale(1)}}
+.ask-note{margin-top:0;height:0;opacity:0;font-size:11px;color:var(--green-600);text-align:center;transition:opacity .3s}
+.ask-note.show{opacity:1;height:auto;margin-top:14px}
+
+/* glass icon tile */
+.gtile{position:relative;width:64px;height:64px;border-radius:18px;display:grid;place-items:center;flex-shrink:0;
+  background:linear-gradient(150deg,rgba(255,255,255,.95),rgba(225,240,231,.6));border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 -8px 16px -10px rgba(16,74,43,.25) inset,0 14px 26px -14px rgba(16,74,43,.32);
+  transition:transform .35s var(--spring),box-shadow .35s var(--ease)}
+.gtile::after{content:"";position:absolute;inset:0;border-radius:18px;background:radial-gradient(60% 50% at 50% 120%,color-mix(in srgb,var(--cc,#46D88E) 60%,transparent),transparent 70%);opacity:.55;transition:opacity .35s}
+.gtile svg{position:relative;z-index:1;width:34px;height:34px;color:var(--green-700);transition:color .35s}
+
+/* grids + cards */
+.grid{display:grid;gap:18px}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:960px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr}}
+@media(max-width:560px){.g4{grid-template-columns:1fr}}
+.card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:var(--shadow);transition:transform .35s var(--spring),box-shadow .35s var(--ease),border-color .35s}
+.card:hover{transform:translateY(-6px);border-color:rgba(26,122,72,.3)}
+/* ---- floating cards — surface, border, blur & shadow are theme-controlled below ---- */
+.card,.feat,.step-card,.ask-step{animation:floaty 12s ease-in-out infinite;animation-delay:var(--fd,0s)}
+.card:hover,.feat:hover,.step-card:hover,.ask-step:hover{scale:1.025}
+@keyframes floaty{0%,100%{translate:0 0}50%{translate:0 -8px}}
+.grid>*:nth-child(4n+1){--fd:0s}.grid>*:nth-child(4n+2){--fd:.9s}.grid>*:nth-child(4n+3){--fd:1.7s}.grid>*:nth-child(4n){--fd:.45s}
+.steps>*:nth-child(1){--fd:0s}.steps>*:nth-child(3){--fd:.9s}.steps>*:nth-child(5){--fd:1.8s}
+@media(prefers-reduced-motion:reduce){.card,.feat,.step-card{animation:none}}
+
+/* how it works */
+.steps{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:stretch}
+.steps .arrow{align-self:center;color:var(--green-500);opacity:.7}.steps .arrow svg{width:26px;height:26px}
+@media(max-width:880px){.steps{grid-template-columns:1fr}.steps .arrow{display:none}}
+.step-card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:var(--shadow);transition:transform .35s var(--spring),box-shadow .35s}
+.step-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lift)}
+.step-card .top{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.step-card .num{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--green-600)}
+.step-card h3{font-family:var(--display);font-size:18px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.step-card p{font-size:13.5px;line-height:1.6;color:var(--muted)}
+
+/* board */
+.board-card{text-align:left}
+.board-card .gtile{margin-bottom:20px}
+.board-card .gtile::before{content:"";position:absolute;top:9px;right:9px;width:7px;height:7px;border-radius:50%;z-index:2;background:var(--cc,var(--green-500));box-shadow:0 0 9px var(--cc,var(--green-500));animation:nodePulse 2.8s var(--ease) infinite;animation-delay:var(--pd,0s)}
+.board-card .role{font-family:var(--display);font-size:22px;font-weight:600;color:var(--ink)}
+.board-card .lens{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--green-600);margin-top:5px}
+.board-card .desc{font-size:13px;line-height:1.6;color:var(--muted);margin-top:14px}
+.board-card .rule{width:32px;height:2px;background:var(--cc,var(--green-500));border-radius:2px;margin-top:18px;transition:width .4s var(--ease)}
+.board-card:hover .rule{width:56px}
+@keyframes nodePulse{0%,100%{opacity:.5;transform:scale(.8)}50%{opacity:1;transform:scale(1.18)}}
+
+/* simple feature cards */
+.feat{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:var(--shadow);transition:transform .35s var(--spring),box-shadow .35s}
+.feat:hover{transform:translateY(-5px);box-shadow:var(--shadow-lift)}
+.feat .tag{position:absolute;top:18px;right:18px;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--green-600);border:1px solid color-mix(in srgb,var(--green-600) 40%,transparent);padding:4px 8px;border-radius:999px}
+.feat .num{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--faint);font-weight:700}
+.feat h3{font-family:var(--display);font-size:18px;font-weight:600;color:var(--ink);margin-top:8px}
+.feat p{font-size:13px;line-height:1.6;color:var(--muted);margin-top:10px}
+
+/* page intro */
+.intro{max-width:var(--maxw);margin:0 auto;padding:clamp(128px,18vh,200px) var(--pad) clamp(28px,5vw,52px)}
+.intro .kicker{display:block;margin-bottom:16px}
+.intro h1{font-size:clamp(38px,5.4vw,68px);font-weight:700;max-width:18ch}
+.intro .lede{margin-top:20px}
+
+/* CTA */
+.cta-card{position:relative;overflow:hidden;border-radius:28px;border:1px solid var(--line);background:linear-gradient(120deg,#FFFFFF,#F1F7F1 60%,#E6F1E8);box-shadow:var(--shadow-lift);text-align:center;padding:clamp(40px,6vw,72px)}
+.cta-card h2{font-size:clamp(28px,3.6vw,46px);margin:0 auto 14px;max-width:22ch}
+.cta-card p{font-size:16px;line-height:1.6;color:var(--ink-2);max-width:48ch;margin:0 auto}
+.cta-card .row{margin-top:28px;display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+
+/* footer */
+.footer{position:relative;z-index:5;border-top:1px solid var(--line);background:rgba(244,247,242,.66);backdrop-filter:blur(4px)}
+.chair-stripe{max-width:var(--maxw);margin:0 auto;display:flex;height:3px}.chair-stripe span{flex:1}
+.footer-grid{max-width:var(--maxw);margin:0 auto;padding:clamp(46px,7vw,70px) var(--pad) 26px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:30px}
+@media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr}}
+.footer .wm{font-family:var(--mono);font-weight:700;font-size:18px;letter-spacing:-0.03em;color:var(--ink);display:inline-flex;align-items:center}
+.footer .wm .cur{display:inline-block;width:8px;height:16px;margin-left:4px;border-radius:1px;background:var(--green-600);box-shadow:0 0 8px rgba(79,224,168,.45);animation:blink 1.1s steps(2) infinite}
+.footer p{margin-top:15px;max-width:38ch;font-size:13px;line-height:1.7;color:var(--muted)}
+.footer h4{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:14px}
+.footer a,.footer .fl{display:block;font-size:13.5px;color:var(--ink-2);padding:5px 0;transition:color .2s;cursor:pointer}
+.footer a:hover{color:var(--green-700)}.footer .fl{color:var(--muted)}
+.footer-bottom{max-width:var(--maxw);margin:0 auto;padding:20px var(--pad) 40px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:12px;color:var(--faint)}
+
+/* ---- clickable cards → hint ---- */
+[data-modal]{cursor:pointer;position:relative}
+.board-card[data-modal]::after{content:"View skills →"}
+.feat[data-modal]::after,.step-card[data-modal]::after{content:"Open →"}
+[data-modal]::after{position:absolute;bottom:15px;right:18px;font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--green-600);opacity:0;transition:opacity .25s;z-index:3}
+[data-modal]:hover::after{opacity:.85}
+/* ---- animated icons ---- */
+.gtile svg,.si svg{animation:iconbreathe 5.5s ease-in-out infinite;transform-origin:center}
+@keyframes iconbreathe{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-1.6px) rotate(.6deg)}}
+.card:hover .gtile svg,.feat:hover .gtile svg,.step-card:hover .gtile svg{animation:iconpop .65s var(--spring)}
+@keyframes iconpop{0%{transform:scale(1) rotate(0)}40%{transform:scale(1.18) rotate(-7deg)}100%{transform:scale(1) rotate(0)}}
+/* ---- custom animated 'd' cursor ---- */
+html.dcur,html.dcur *{cursor:none!important}
+.dcursor{position:fixed;left:0;top:0;z-index:9998;pointer-events:none;display:none;align-items:baseline;
+  font-family:var(--mono);font-weight:800;font-size:19px;line-height:1;color:var(--green-600);
+  text-shadow:0 0 10px rgba(79,224,168,.55);transition:color .15s ease,opacity .2s ease;will-change:transform}
+html.dcur .dcursor{display:inline-flex}
+.dcursor::before{content:"d"}
+.dcursor::after{content:"";width:8px;height:15px;margin-left:1px;border-radius:1px;background:currentColor;box-shadow:0 0 8px rgba(79,224,168,.6);animation:blink 1.1s steps(2) infinite}
+.dcursor.hot{color:#8FF0C2}
+.dcursor.down{opacity:.55}
+/* ---- glass modal (on top of everything) ---- */
+#modal{position:fixed;inset:0;z-index:400;display:none;align-items:center;justify-content:center;padding:clamp(16px,4vw,48px)}
+#modal.open{display:flex}
+.modal-bg{position:absolute;inset:0;background:rgba(18,30,24,.34);-webkit-backdrop-filter:blur(10px) saturate(120%);backdrop-filter:blur(10px) saturate(120%);opacity:0;transition:opacity .4s var(--ease)}
+#modal.open .modal-bg{opacity:1}
+.modal-panel{position:relative;width:100%;max-width:680px;max-height:88vh;overflow:auto;border-radius:26px;padding:clamp(26px,3.5vw,42px);
+  background:rgba(244,249,246,.96);-webkit-backdrop-filter:none;backdrop-filter:none;
+  border:1px solid rgba(255,255,255,.82);box-shadow:0 1px 0 rgba(255,255,255,.95) inset,0 44px 100px -30px rgba(14,60,40,.5);
+  transform:translateY(26px) scale(.96);opacity:0;transition:transform .5s var(--ease),opacity .5s var(--ease)}
+#modal.open .modal-panel{transform:none;opacity:1}
+.modal-close{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:var(--ink-2);background:rgba(255,255,255,.6);border:1px solid var(--line-2);transition:transform .25s var(--spring),color .2s;z-index:2}
+.modal-close:hover{transform:rotate(90deg) scale(1.06);color:var(--green-700)}.modal-close svg{width:16px;height:16px}
+.modal-head{display:flex;align-items:center;gap:18px}
+.modal-head .gtile{width:74px;height:74px;animation:floaty 6s ease-in-out infinite}.modal-head .gtile svg{width:40px;height:40px}
+.modal-eye{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--green-600);font-weight:700}
+.modal-title{font-family:var(--display);font-size:clamp(24px,3vw,34px);font-weight:600;color:var(--ink);line-height:1.04;margin-top:4px}
+.modal-lede{margin-top:16px;font-size:14.5px;line-height:1.62;color:var(--ink-2)}
+.modal-sec{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);font-weight:700;margin:24px 0 12px}
+.modal-pillars{display:flex;flex-wrap:wrap;gap:8px}
+.modal-pillars span{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--green-700);background:rgba(26,122,72,.09);border:1px solid rgba(26,122,72,.18);padding:6px 10px;border-radius:999px}
+.modal-skill{display:flex;align-items:center;gap:12px;margin-bottom:11px}
+.modal-skill .sn{flex:1;font-size:13px;color:var(--ink-2)}
+.modal-skill .track{display:block;width:118px;height:6px;border-radius:999px;background:rgba(16,42,30,.1);overflow:hidden;flex-shrink:0}
+.modal-skill .fill{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--green-600),var(--glow));width:0;transition:width .9s var(--ease)}
+.modal-skill .lv{width:74px;flex-shrink:0;text-align:right;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--green-600);font-weight:700}
+.modal-list{margin-top:2px}.modal-list li{list-style:none;position:relative;padding-left:18px;font-size:13.5px;line-height:1.6;color:var(--ink-2);margin-bottom:8px}
+.modal-list li::before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;border-radius:2px;background:var(--green-500);transform:rotate(45deg)}
+.modal-does{margin-top:24px;padding:16px 18px;border-radius:14px;background:rgba(26,122,72,.07);border:1px solid rgba(26,122,72,.16);font-size:13.5px;line-height:1.6;color:var(--ink-2)}
+.modal-does b{color:var(--green-700)}
+/* ---- sealed memo proof ---- */
+.proof{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(24px,4vw,48px);align-items:center}
+@media(max-width:860px){.proof{grid-template-columns:1fr}}
+.memo{cursor:pointer;background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,.8);border-radius:22px;overflow:hidden;box-shadow:var(--shadow-lift);transition:scale .35s var(--spring)}
+.memo:hover{scale:1.012}
+.memo-bar{display:flex;align-items:center;gap:8px;padding:13px 18px;border-bottom:1px solid var(--line);background:rgba(26,122,72,.06)}
+.memo-bar .d{width:9px;height:9px;border-radius:50%}
+.memo-bar .lbl{margin-left:6px;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);font-weight:700}
+.memo-bar .lbl b{color:var(--green-700)}
+.memo-bar .ref{margin-left:auto;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--faint)}
+.memo-body{padding:clamp(20px,3vw,30px)}
+.memo-q{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:700}
+.memo-rec{margin-top:9px;font-family:var(--display);font-size:clamp(16px,1.9vw,21px);font-weight:600;line-height:1.32;color:var(--ink);letter-spacing:-0.02em}
+.memo-rec em{color:var(--green-700)}
+.memo-meta{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;margin-top:18px}
+.conf{display:flex;align-items:center;gap:11px}
+.conf .track{width:108px;height:6px;border-radius:999px;background:rgba(16,42,30,.1);overflow:hidden}
+.conf .fill{display:block;height:100%;width:82%;border-radius:999px;background:linear-gradient(90deg,var(--green-600),var(--glow))}
+.conf .n{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--ink)}
+.tally{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.tally b.cc{color:var(--green-600)}.tally b.dc{color:#C98A1A}
+.memo-dissent{margin-top:16px;padding:13px 15px;border-left:2px solid var(--a-chro);background:rgba(229,209,122,.14);border-radius:0 10px 10px 0;font-size:12.5px;line-height:1.55;color:var(--ink-2)}
+.memo-dissent .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#9A7B12;font-weight:700}
+.memo-cites{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.cite{display:flex;gap:9px;align-items:baseline;font-size:12px;color:var(--muted)}
+.cite .st{color:var(--green-600);letter-spacing:1px;flex-shrink:0}.cite b{color:var(--ink-2);font-weight:600}
+.memo-seal{display:flex;align-items:center;gap:13px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+.seal-mark{width:42px;height:42px;flex-shrink:0;animation:sealGlow 5.5s ease-in-out infinite}
+@keyframes sealGlow{0%,100%{filter:drop-shadow(0 5px 12px rgba(6,30,18,.6))}50%{filter:drop-shadow(0 7px 22px rgba(79,224,168,.45))}}
+.wordmark{font-family:var(--mono);font-weight:800;color:var(--glow);letter-spacing:-0.045em;text-shadow:0 0 22px rgba(79,224,168,.45)}
+.wordmark i{display:inline-block;width:.34em;height:.84em;margin-left:.1em;vertical-align:-0.07em;border-radius:.05em;background:var(--glow);box-shadow:0 0 14px rgba(79,224,168,.7);animation:blink 1.1s steps(2) infinite}
+.memo-seal .sx .s1{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--green-700);font-weight:700}
+.memo-seal .sx .s2{font-family:var(--mono);font-size:9px;color:var(--faint);word-break:break-all;line-height:1.5;margin-top:2px}
+.illus{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);text-align:right}
+/* ---- request form ---- */
+.field{margin-bottom:14px}
+.field label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px}
+.field input,.field textarea{width:100%;font-family:var(--sans);font-size:14px;color:var(--ink);background:rgba(255,255,255,.6);border:1px solid var(--line-2);border-radius:12px;padding:12px 14px;outline:none;transition:border-color .2s,box-shadow .2s}
+.field textarea{min-height:84px;resize:vertical}
+.field input:focus,.field textarea:focus{border-color:var(--green-500);box-shadow:0 0 0 3px rgba(34,154,87,.14)}
+.field .err{display:block;color:#B33A3A;font-size:11px;margin-top:5px}
+.form-foot{margin-top:10px;font-size:11px;color:var(--faint)}
+.form-success{text-align:center;padding:20px 4px}
+.form-success .ok{width:54px;height:54px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;background:rgba(26,122,72,.12);color:var(--green-600)}
+.form-success .ok svg{width:26px;height:26px}
+.term-title .pv{margin-left:8px;color:var(--green-700);border:1px solid rgba(26,122,72,.4);border-radius:999px;padding:1px 7px;font-size:8.5px}
+/* ---- mobile menu ---- */
+html.menu-open,html.menu-open body{overflow:hidden}
+.nav-burger{display:none;width:42px;height:42px;border-radius:11px;flex-direction:column;align-items:center;justify-content:center;gap:4.5px;border:1px solid var(--line-2);background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);cursor:pointer}
+.nav-burger span{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;transition:transform .3s var(--ease),opacity .2s}
+@media(max-width:1080px){.nav-burger{display:inline-flex}}
+@media(max-width:700px){.nav-right .btn-primary{display:none}}
+html.menu-open .nav-burger span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+html.menu-open .nav-burger span:nth-child(2){opacity:0}
+html.menu-open .nav-burger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{position:fixed;inset:0;z-index:80;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:0 var(--pad);
+  background:rgba(244,247,242,.92);-webkit-backdrop-filter:blur(26px) saturate(160%);backdrop-filter:blur(26px) saturate(160%);
+  opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s}
+html.menu-open .mobile-menu{opacity:1;visibility:visible}
+.mobile-menu a[data-route]{font-family:var(--display);font-size:clamp(30px,8vw,46px);font-weight:600;letter-spacing:-0.03em;color:var(--ink);padding:8px 0;opacity:0;transform:translateY(14px);transition:opacity .45s var(--ease),transform .45s var(--ease),color .2s}
+.mobile-menu a[data-route].active{color:var(--green-700)}
+html.menu-open .mobile-menu a[data-route]{opacity:1;transform:none}
+.mobile-menu a:nth-child(1){transition-delay:.06s}.mobile-menu a:nth-child(2){transition-delay:.11s}.mobile-menu a:nth-child(3){transition-delay:.16s}.mobile-menu a:nth-child(4){transition-delay:.21s}.mobile-menu a:nth-child(5){transition-delay:.26s}
+.mobile-menu a[data-route].mm-cta{margin-top:26px;align-self:flex-start;font-family:var(--sans);font-size:14px;font-weight:600;color:#EAF6EE;letter-spacing:0;transition-delay:.32s}
+.modal-fine{margin-top:12px;font-size:11.5px;line-height:1.55;color:var(--muted)}.modal-fine b{color:var(--green-700)}
+/* blueprint underlay inside pop-up blocks */
+.modal-panel{position:relative}
+.modal-panel::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;opacity:.32;overflow:hidden;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Cpath d='M48 42v12M42 48h12' stroke='%2334C77B' stroke-opacity='0.5' stroke-width='1'/%3E%3C/svg%3E") 0 0/96px 96px,
+   linear-gradient(rgba(52,199,123,.14) 1px,transparent 1px) 0 0/96px 96px,
+   linear-gradient(90deg,rgba(52,199,123,.14) 1px,transparent 1px) 0 0/96px 96px,
+   linear-gradient(rgba(52,199,123,.06) 1px,transparent 1px) 0 0/24px 24px,
+   linear-gradient(90deg,rgba(52,199,123,.06) 1px,transparent 1px) 0 0/24px 24px}
+#modal-content{position:relative;z-index:1}
+.modal-close{position:absolute!important;z-index:3}
+/* theme toggle */
+.theme-btn{width:42px;height:42px;border-radius:11px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(--line-2);background:rgba(255,255,255,.04);color:var(--ink-2);cursor:pointer;transition:color .2s,border-color .2s,transform .3s var(--spring)}
+.theme-btn:hover{color:var(--green-700);border-color:var(--green-600);transform:translateY(-1px)}
+.theme-btn svg{width:18px;height:18px}
+.theme-btn .sun{display:none}[data-theme="light"] .theme-btn .sun{display:block}[data-theme="light"] .theme-btn .moon{display:none}
+/* cookie banner */
+.cookie{position:fixed;left:clamp(14px,3vw,28px);right:clamp(14px,3vw,28px);bottom:clamp(14px,3vw,24px);z-index:300;max-width:540px;margin:0 auto;padding:18px 20px;border-radius:18px;border:1px solid var(--line-2);background:rgba(12,22,18,.72);-webkit-backdrop-filter:blur(22px) saturate(160%);backdrop-filter:blur(22px) saturate(160%);box-shadow:var(--shadow-lift);transform:translateY(160%);opacity:0;transition:transform .6s var(--ease),opacity .6s var(--ease)}
+[data-theme="light"] .cookie{background:rgba(255,255,255,.78)}
+.cookie.show{transform:none;opacity:1}
+.cookie .ct{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--green-600);font-weight:700;display:flex;align-items:center;gap:8px}
+.cookie .ct::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green-500);box-shadow:0 0 8px var(--green-500)}
+.cookie p{margin-top:8px;font-size:12.5px;line-height:1.55;color:var(--muted)}.cookie p a{color:var(--green-700)}
+.cookie-row{display:flex;gap:10px;margin-top:14px}
+.cookie-row button{flex:1;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:11px 12px;border-radius:10px;cursor:pointer;transition:all .2s var(--spring)}
+.cookie-row .accept{background:linear-gradient(135deg,var(--green-700),var(--green-900));color:#EAF6EE;border:none}
+.cookie-row .accept:hover{transform:translateY(-1px)}
+.cookie-row .decline{background:transparent;color:var(--ink-2);border:1px solid var(--line-2)}
+.cookie-row .decline:hover{border-color:var(--green-600);color:var(--green-700)}
+/* all blocks share the Request-Access glass style */
+.card,.feat,.step-card,.ask-step,.memo,.cta-card{background:linear-gradient(150deg,rgba(34,154,87,.16),rgba(34,154,87,.055));border-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:0 16px 36px -26px rgba(14,55,36,.2)}
+/* =========================================================
+   DARK THEME — flips tokens + glass surfaces.
+   The CRT console stays light on purpose (a lit monitor).
+   ========================================================= */
+[data-theme="dark"]{
+  --bg:#070F0C; --bg-center:#0B1813; --bg-edge:#040A08;
+  --surface:#0E1A16; --surface-2:#0B1511;
+  --ink:#EAFBF1; --ink-2:#C6DAD0; --muted:#85A096; --faint:#566B62;
+  --green-600:#36C883; --green-500:#2FB877; --green-700:#4FE0A8;
+  --line:rgba(168,240,204,.10); --line-2:rgba(168,240,204,.18); --line-3:rgba(168,240,204,.30);
+  --bp-minor:rgba(110,225,165,.03); --bp-major:rgba(110,225,165,.05);
+  --shadow:0 1px 0 rgba(255,255,255,.04) inset,0 18px 40px -24px rgba(0,0,0,.7);
+  --shadow-lift:0 1px 0 rgba(255,255,255,.05) inset,0 36px 72px -30px rgba(0,0,0,.82);
+}
+[data-theme="dark"] body{background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cpath d='M60 53v14M53 60h14' stroke='%235FE3A0' stroke-opacity='0.1' stroke-width='1'/%3E%3C/svg%3E") 0 0/120px 120px,
+  linear-gradient(var(--bp-major) 1px,transparent 1px) 0 0/120px 120px,
+  linear-gradient(90deg,var(--bp-major) 1px,transparent 1px) 0 0/120px 120px,
+  linear-gradient(var(--bp-minor) 1px,transparent 1px) 0 0/24px 24px,
+  linear-gradient(90deg,var(--bp-minor) 1px,transparent 1px) 0 0/24px 24px,
+  radial-gradient(130% 120% at 50% 28%, #0B1813 0%, #070F0C 56%, #040A08 100%);
+  background-attachment:fixed}
+[data-theme="dark"] #scrim{background:radial-gradient(120% 82% at 50% 32%, rgba(4,9,7,.58), rgba(4,9,7,0) 68%)}
+[data-theme="dark"] .nav.shrink{background:rgba(8,18,14,.78);border-bottom-color:var(--line)}
+[data-theme="dark"] .nav-burger{background:rgba(255,255,255,.05);border-color:var(--line-2)} [data-theme="dark"] .nav-burger span{background:var(--ink)}
+[data-theme="dark"] :is(.card,.feat,.step-card,.ask-step,.cta-card,.memo){background:linear-gradient(155deg,rgba(22,84,54,.5),rgba(11,44,28,.34));border-color:transparent;-webkit-backdrop-filter:blur(22px) saturate(150%);backdrop-filter:blur(22px) saturate(150%);box-shadow:0 24px 50px -34px rgba(0,0,0,.65)}
+[data-theme="dark"] .ask-step h4{color:var(--ink)}[data-theme="dark"] .ask-step p{color:var(--muted)}
+[data-theme="dark"] :is(.card,.feat,.step-card,.ask-step):hover{border-color:rgba(79,224,168,.4)}
+[data-theme="dark"] .gtile{background:linear-gradient(150deg,rgba(255,255,255,.12),rgba(255,255,255,.02));border-color:rgba(255,255,255,.14);box-shadow:0 1px 0 rgba(255,255,255,.1) inset,0 -8px 16px -10px rgba(0,0,0,.5) inset,0 14px 26px -14px rgba(0,0,0,.6)}
+[data-theme="dark"] .gtile svg{color:var(--green-700)}
+[data-theme="dark"] .btn-ghost{background:rgba(255,255,255,.05);color:var(--ink);border-color:var(--line-2)}
+[data-theme="dark"] .btn-ghost:hover{border-color:var(--green-700);color:var(--green-700)}
+[data-theme="dark"] .modal-bg{background:rgba(0,0,0,.55)}
+[data-theme="dark"] .modal-panel{background:rgba(11,26,20,.94);border-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:0 44px 100px -30px rgba(0,0,0,.85)}
+[data-theme="dark"] .modal-panel::before{opacity:.5}
+[data-theme="dark"] .modal-close{background:rgba(255,255,255,.06);border-color:var(--line-2);color:var(--ink-2)}
+[data-theme="dark"] :is(.modal-skill .track,.conf .track){background:rgba(255,255,255,.1)}
+[data-theme="dark"] .modal-pillars span{color:var(--green-700);background:rgba(79,224,168,.1);border-color:rgba(79,224,168,.24)}
+[data-theme="dark"] .modal-does{background:rgba(79,224,168,.08);border-color:rgba(79,224,168,.2)}
+[data-theme="dark"] .modal-list li::before{background:var(--green-700)}
+[data-theme="dark"] .mobile-menu{background:rgba(6,13,11,.95)}
+[data-theme="dark"] .footer{background:rgba(8,18,14,.5)}
+[data-theme="dark"] :is(.field input,.field textarea){background:rgba(255,255,255,.05);border-color:var(--line-2);color:var(--ink)}
+[data-theme="dark"] :is(.field input,.field textarea)::placeholder{color:var(--faint)}
+[data-theme="dark"] .cta-card{background:linear-gradient(155deg,rgba(22,84,54,.5),rgba(11,44,28,.34));border-color:transparent}
+[data-theme="dark"] .memo{background:linear-gradient(155deg,rgba(22,84,54,.5),rgba(11,44,28,.34));border-color:transparent}
+[data-theme="dark"] .memo-bar{background:rgba(79,224,168,.07);border-bottom-color:var(--line)}
+[data-theme="dark"] .memo-dissent{background:rgba(229,209,122,.1)}
+[data-theme="dark"] .tally b.dc{color:#E5B84A}
+[data-theme="dark"] .term{background:linear-gradient(180deg,#0d1a15,#070f0c);border:1px solid var(--line-2);box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 -3px 8px rgba(0,0,0,.4) inset,0 30px 56px -26px rgba(0,0,0,.75)}
+[data-theme="dark"] .term-bar .dot{box-shadow:0 0 0 1px rgba(255,255,255,.05)}
+[data-theme="dark"] .term-title{color:var(--faint)}
+[data-theme="dark"] .term-body{background:linear-gradient(180deg,#091310,#050b09);box-shadow:0 2px 8px rgba(0,0,0,.55) inset,0 0 0 1px rgba(79,224,168,.14) inset}
+[data-theme="dark"] .term-prompt{color:var(--glow);text-shadow:0 0 8px rgba(79,224,168,.6)}
+[data-theme="dark"] .term-input{color:#C8F5DC;caret-color:var(--glow);text-shadow:0 0 6px rgba(79,224,168,.35)}
+[data-theme="dark"] .term-input::placeholder{color:rgba(168,240,204,.4)}
+[data-theme="dark"] .term-body::after{background:repeating-linear-gradient(0deg,rgba(0,0,0,.4) 0 1px,transparent 1px 3px);opacity:.5}
+[data-theme="dark"] .term-body::before{background:linear-gradient(105deg,rgba(79,224,168,.12),transparent 42%);opacity:.7}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}.rv{opacity:1;transform:none}}
+
+/* ===== editorial long-form: legal + research (Anthropic-style prose) ===== */
+.prose{max-width:74ch;margin:0 auto}
+.prose .doc-meta{display:flex;gap:10px 22px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:34px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.prose section{margin:0 0 clamp(26px,3.4vw,38px)}
+.prose h3{font-family:var(--display);font-weight:600;font-size:clamp(18px,2vw,22px);line-height:1.25;letter-spacing:-.012em;color:var(--ink);margin:0 0 12px}
+.prose h3 .n{font-family:var(--mono);font-size:.6em;font-weight:700;color:var(--green-600);margin-right:.7em;letter-spacing:.06em}
+.prose p{font-family:var(--sans);font-size:clamp(15px,1.25vw,17px);line-height:1.74;color:var(--ink-2);margin:0 0 13px;max-width:70ch}
+.prose p:last-child{margin-bottom:0}
+.prose b,.prose strong{color:var(--ink);font-weight:600}
+.prose ul{margin:8px 0 14px;padding:0;list-style:none}
+.prose li{position:relative;padding-left:22px;margin:0 0 9px;font-family:var(--sans);font-size:clamp(15px,1.2vw,16px);line-height:1.62;color:var(--ink-2)}
+.prose li::before{content:"";position:absolute;left:2px;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--green-500)}
+.prose a{color:var(--green-700);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--green-700) 34%,transparent)}
+.prose .doc-note{margin-top:30px;padding:16px 18px;border-radius:14px;background:rgba(34,154,87,.08);font-family:var(--sans);font-size:13px;line-height:1.62;color:var(--ink-2)}
+[data-theme="dark"] .prose .doc-note{background:linear-gradient(155deg,rgba(22,84,54,.5),rgba(11,44,28,.34))}
+
+/* research — publication library: filter + editorial index (one readable column) */
+.pub-filter{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:9px;max-width:940px;margin:0 auto clamp(24px,3vw,36px)}
+.pub-filter .chip{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 6px;border-radius:15px;cursor:pointer;background:rgba(46,120,88,.06);border:1px solid var(--line-2);transition:transform .25s var(--ease),background .25s,border-color .25s}
+.pub-filter .chip:hover{transform:translateY(-2px);border-color:var(--cc,var(--green-600));background:color-mix(in srgb,var(--cc,var(--green-600)) 10%,transparent)}
+.pub-filter .chip .ci{width:26px;height:26px;color:var(--cc,var(--green-600));display:grid;place-items:center}
+.pub-filter .chip .ci svg{width:100%;height:100%}
+.pub-filter .chip .cl{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.pub-filter .chip.on{background:color-mix(in srgb,var(--cc,var(--green-600)) 18%,transparent);border-color:var(--cc,var(--green-600))}
+.pub-filter .chip.on .cl{color:var(--ink)}
+@media(max-width:760px){.pub-filter{grid-template-columns:repeat(5,1fr)}}
+@media(max-width:460px){.pub-filter{grid-template-columns:repeat(3,1fr)}}
+.feed{display:grid;grid-template-columns:repeat(auto-fill,minmax(288px,1fr));gap:20px;max-width:1080px;margin:0 auto}
+.post{display:flex;flex-direction:column;border-radius:18px;overflow:hidden;cursor:pointer;background:linear-gradient(155deg,rgba(34,154,87,.13),rgba(34,154,87,.045));box-shadow:0 18px 40px -28px rgba(14,55,36,.25);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.post:hover{transform:translateY(-6px);box-shadow:0 40px 80px -32px rgba(14,55,36,.32)}
+[data-theme="dark"] .post{background:linear-gradient(155deg,rgba(22,84,54,.5),rgba(11,44,28,.34));box-shadow:0 22px 48px -32px rgba(0,0,0,.65)}
+[data-theme="dark"] .post:hover{box-shadow:0 40px 84px -34px rgba(0,0,0,.78)}
+.post-cover{position:relative;aspect-ratio:16/9;overflow:hidden;background:radial-gradient(125% 130% at 26% 0%,color-mix(in srgb,var(--cc) 24%,#e7f0e9),#edf3ee 72%)}
+.post-cover::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(16,60,40,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(16,60,40,.08) 1px,transparent 1px);background-size:24px 24px;opacity:.6}
+.post-cover svg{position:absolute;inset:0;width:100%;height:100%;color:color-mix(in srgb,var(--cc) 78%,#0f3a26)}
+.post-cover svg .hl{display:none}
+[data-theme="dark"] .post-cover{background:radial-gradient(125% 130% at 26% 0%,color-mix(in srgb,var(--cc) 36%,#0b2016),#081310 72%)}
+[data-theme="dark"] .post-cover::before{background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px)}
+[data-theme="dark"] .post-cover svg{color:var(--cc)}
+[data-theme="dark"] .post-cover svg .hl{display:inline}
+.post:hover .post-cover svg{transform:scale(1.04);transition:transform .6s var(--ease)}
+.post-badge{position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:8.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#dceee4;background:rgba(8,19,14,.62);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);padding:5px 9px;border-radius:999px}
+.post-badge.full{color:#06140d;background:var(--cc)}
+.post-head{display:flex;align-items:center;gap:11px;padding:15px 18px 0}
+.post-head .av{flex:0 0 auto;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:var(--cc);background:color-mix(in srgb,var(--cc) 16%,transparent);border:1px solid color-mix(in srgb,var(--cc) 38%,transparent)}
+.post-head .av svg{width:18px;height:18px}
+.post-head .who{display:flex;flex-direction:column;min-width:0}
+.post-head .nm{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cc)}
+.post-head .hd{font-family:var(--sans);font-size:11.5px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.post-cap{padding:12px 18px 20px;display:flex;flex-direction:column;flex:1}
+.post-cap h4{font-family:var(--display);font-weight:600;font-size:16px;line-height:1.32;letter-spacing:-.01em;color:var(--ink);margin:0 0 8px}
+.post-cap p{font-family:var(--sans);font-size:13px;line-height:1.55;color:var(--ink-2);margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.post-cap .post-meta{margin-top:auto;padding-top:13px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.feed[data-view="coo"] .post:not([data-chair="coo"]),.feed[data-view="cfo"] .post:not([data-chair="cfo"]),.feed[data-view="cmo"] .post:not([data-chair="cmo"]),.feed[data-view="clo"] .post:not([data-chair="clo"]),.feed[data-view="cto"] .post:not([data-chair="cto"]),.feed[data-view="cso"] .post:not([data-chair="cso"]),.feed[data-view="cpo"] .post:not([data-chair="cpo"]),.feed[data-view="chro"] .post:not([data-chair="chro"]){display:none}
+
+/* article reader (wide modal) */
+.modal-panel.wide{max-width:800px}
+.article .a-author{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.article .a-author .av{flex:0 0 auto;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:var(--cc,var(--green-600));background:color-mix(in srgb,var(--cc,var(--green-600)) 16%,transparent);border:1px solid color-mix(in srgb,var(--cc,var(--green-600)) 40%,transparent)}
+.article .a-author .av svg{width:23px;height:23px}
+.article .a-author .a-id{display:flex;flex-direction:column;gap:1px}
+.article .a-author .nm{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cc,var(--green-600))}
+.article .a-author .hd{font-family:var(--sans);font-size:12.5px;color:var(--faint)}
+.article h2{font-family:var(--display);font-weight:700;font-size:clamp(23px,3.3vw,33px);line-height:1.13;letter-spacing:-.02em;color:var(--ink);margin:0 0 16px}
+.article .a-meta{display:flex;gap:8px 16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);padding-bottom:20px;margin-bottom:24px;border-bottom:1px solid var(--line)}
+.article .a-abstract{font-family:var(--sans);font-size:clamp(16px,1.4vw,18px);line-height:1.62;color:var(--ink);margin:0 0 26px;padding-left:18px;border-left:2px solid var(--green-500)}
+.article .a-soon{margin-top:6px;padding:16px 18px;border-radius:14px;background:linear-gradient(155deg,rgba(22,84,54,.5),rgba(11,44,28,.34));font-family:var(--sans);font-size:13px;line-height:1.6;color:var(--ink-2)}
+.article .a-soon a{color:var(--green-700);border-bottom:1px solid color-mix(in srgb,var(--green-700) 34%,transparent)}
+.article .a-body h4{font-family:var(--display);font-weight:600;font-size:clamp(16px,1.7vw,19px);color:var(--ink);letter-spacing:-.01em;margin:26px 0 10px}
+.article .a-body h4:first-child{margin-top:0}
+.article .a-body p{font-family:var(--sans);font-size:clamp(15px,1.25vw,16.5px);line-height:1.75;color:var(--ink-2);margin:0 0 13px}
+.article .a-body b,.article .a-body strong{color:var(--ink);font-weight:600}
+.article .a-body ul{margin:8px 0 14px;padding:0;list-style:none}
+.article .a-body li{position:relative;padding-left:20px;margin:0 0 8px;font-family:var(--sans);font-size:15px;line-height:1.62;color:var(--ink-2)}
+.article .a-body li::before{content:"";position:absolute;left:2px;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--green-500)}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<canvas id="tess" aria-hidden="true"></canvas>
+<div id="scrim" aria-hidden="true"></div>
+
+<nav class="nav" id="nav">
+  <a class="brand" data-route="home" aria-label="delidec — home"><span class="wm">delidec<span class="cur"></span></span></a>
+  <div class="nav-links" id="navlinks">
+    <a data-route="home">Product</a>
+    <a data-route="board">Board</a>
+    <a data-route="research">Research</a>
+    <a data-route="security">Security</a>
+    <a data-route="company">Company</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-signin" data-modal="memo">See a memo</a>
+    <a class="btn btn-primary" data-modal="request">Request a demo <span class="ar">→</span></a>
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle light or dark theme"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.3 12H2.1M21.9 12h-2.2M5.5 5.5l1.6 1.6M16.9 16.9l1.6 1.6M18.5 5.5l-1.6 1.6M7.1 16.9l-1.6 1.6"/></svg></button>
+    <button class="nav-burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobilemenu" aria-hidden="true">
+  <a data-route="home">Product</a>
+  <a data-route="board">Board</a>
+  <a data-route="research">Research</a>
+  <a data-route="security">Security</a>
+  <a data-route="company">Company</a>
+  <a class="btn btn-primary mm-cta" data-modal="request">Request a demo →</a>
+</div>
+
+<main id="view"></main>
+
+<footer class="footer">
+  <div class="chair-stripe" aria-hidden="true"><span style="background:var(--a-coo)"></span><span style="background:var(--a-cfo)"></span><span style="background:var(--a-cmo)"></span><span style="background:var(--a-clo)"></span><span style="background:var(--a-cto)"></span><span style="background:var(--a-cso)"></span><span style="background:var(--a-cpo)"></span><span style="background:var(--a-chro)"></span></div>
+  <div class="footer-grid">
+    <div>
+      <span class="wm">delidec<span class="cur"></span></span>
+      <p>Eight specialist AI executives analyze independently. A synthesis layer unifies every perspective into one clear path — cited, governed, on the record. You make the final call.</p>
+    </div>
+    <div><h4>Study</h4><a data-route="home">Product</a><a data-route="board">The board</a><a data-route="research">Research</a></div>
+    <div><h4>Company</h4><a data-route="company">Investors</a><a href="mailto:boris@delidec.com">Contact</a><a href="mailto:privacy@delidec.com">Privacy requests</a></div>
+    <div><h4>Trust</h4><a data-route="security">Security</a><a data-route="privacy">Privacy</a><a data-route="terms">Terms</a><span class="fl">DPA on request</span></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 DELIDEC Corporation · Delaware, USA</span>
+    <span>Decision-support software. It produces inputs; you decide. Not legal, financial, or professional advice.</span>
+  </div>
+</footer>
+
+<div id="modal" aria-hidden="true">
+  <div class="modal-bg" data-close></div>
+  <div class="modal-panel" role="dialog" aria-modal="true">
+    <button class="modal-close" data-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+<div class="dcursor" aria-hidden="true"></div>
+
+<div class="cookie" id="cookie" role="dialog" aria-label="Cookie notice">
+  <div class="ct">Cookies</div>
+  <p>We use only essential cookies to run the site and remember your theme — no tracking, no advertising cookies. See our <a data-route="privacy">privacy notice</a>.</p>
+  <div class="cookie-row"><button class="accept" id="ckAccept">Accept</button><button class="decline" id="ckDecline">Essential only</button></div>
+</div>
+
+<!-- icon library (persistent in shell so injected views resolve) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="ic-coo" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"><rect x="19" y="19" width="10" height="10" rx="1.5"/><rect x="6" y="6" width="8" height="8" rx="1.2"/><rect x="34" y="6" width="8" height="8" rx="1.2"/><rect x="6" y="34" width="8" height="8" rx="1.2"/><rect x="34" y="34" width="8" height="8" rx="1.2"/><path d="M14 10h5v9M34 10h-5v9M14 38h5v-9M34 38h-5v-9" opacity=".7"/></g></symbol>
+  <symbol id="ic-cfo" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M7 41h34"/><rect x="10" y="26" width="6" height="13" rx="1"/><rect x="21" y="18" width="6" height="21" rx="1"/><rect x="32" y="10" width="6" height="29" rx="1"/><path d="M10 22l11-8 6 4 11-9" opacity=".6"/></g></symbol>
+  <symbol id="ic-cmo" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20v8l16 7V13z"/><path d="M9 20H7a3 3 0 000 8h2"/><path d="M25 13l9-5M25 35l9 5M34 24h7" opacity=".7"/></g></symbol>
+  <symbol id="ic-clo" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M24 8v33M14 41h20"/><path d="M10 16h28M14 16l-5 10h10zM34 16l5 10h-10z"/><path d="M9 26a5 5 0 0010 0M29 26a5 5 0 0010 0" opacity=".7"/><circle cx="24" cy="8" r="2.4"/></g></symbol>
+  <symbol id="ic-cto" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round"><rect x="16" y="16" width="16" height="16" rx="2"/><path d="M20 16v-7M28 16v-7M20 39v-7M28 39v-7M16 20H9M16 28H9M39 20h-7M39 28h-7" opacity=".75"/><rect x="21" y="21" width="6" height="6" rx="1"/></g></symbol>
+  <symbol id="ic-cso" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round"><path d="M24 6l15 6v9c0 9-6 15-15 19-9-4-15-10-15-19v-9z"/><path d="M17 24l5 5 9-10" opacity=".8"/></g></symbol>
+  <symbol id="ic-cpo" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round"><path d="M24 6l16 9v18l-16 9-16-9V15z"/><path d="M24 6v9M24 42v-9M8 15l16 9 16-9M24 24v9" opacity=".7"/><path d="M24 15l8 4.5v9L24 33l-8-4.5v-9z"/></g></symbol>
+  <symbol id="ic-chro" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round"><circle cx="24" cy="14" r="5"/><path d="M14 39c0-6 4.5-10 10-10s10 4 10 10"/><circle cx="10" cy="20" r="3.6"/><circle cx="38" cy="20" r="3.6"/><path d="M4 36c0-4 3-7 6.5-7M44 36c0-4-3-7-6.5-7" opacity=".7"/></g></symbol>
+  <symbol id="ic-inputs" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round"><rect x="6" y="8" width="11" height="11" rx="1.4"/><rect x="6" y="29" width="11" height="11" rx="1.4"/><rect x="31" y="8" width="11" height="11" rx="1.4"/><rect x="31" y="29" width="11" height="11" rx="1.4"/><path d="M17 13.5h7M17 34.5h7M24 13.5v21M24 24h7" opacity=".7"/></g></symbol>
+  <symbol id="ic-synthesis" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round"><path d="M24 7l15 8.5v17L24 41 9 32.5v-17z"/><path d="M9 15.5l15 8.5 15-8.5M24 24v17" opacity=".55"/><circle cx="24" cy="24" r="4.5"/></g></symbol>
+  <symbol id="ic-decision" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round"><path d="M24 7l15 8.5v17L24 41 9 32.5v-17z"/><path d="M16 23l6 6 11-12"/></g></symbol>
+  <symbol id="ic-ask" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round"><path d="M9 11h30v20H26l-8 7v-7H9z"/><path d="M19 19a5 5 0 117 4.5c-1.5.8-2 1.5-2 3M24 30v0" opacity=".85"/></g></symbol>
+  <symbol id="ic-frameworks" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round"><rect x="8" y="10" width="32" height="9" rx="1.6"/><rect x="8" y="22" width="14" height="16" rx="1.6"/><rect x="26" y="22" width="14" height="16" rx="1.6"/></g></symbol>
+  <symbol id="ic-sims" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round"><circle cx="24" cy="24" r="16"/><path d="M24 8v32M8 24h32" opacity=".5"/><path d="M13 13l22 22M35 13L13 35" opacity=".35"/></g></symbol>
+  <symbol id="ic-safety" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round"><path d="M24 6l15 6v9c0 9-6 15-15 19-9-4-15-10-15-19v-9z"/><path d="M24 16v8M24 30v0" opacity=".85"/></g></symbol>
+  <symbol id="ic-loop" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round"><path d="M40 24a16 16 0 11-5-11.6"/><path d="M40 7v8h-8"/></g></symbol>
+  <symbol id="ic-human" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round"><circle cx="24" cy="15" r="6"/><path d="M12 40c0-7 5.4-12 12-12s12 5 12 12"/><path d="M24 28v6" opacity=".6"/></g></symbol>
+  <symbol id="ic-claude" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round"><circle cx="24" cy="24" r="6"/><path d="M24 6v6M24 36v6M6 24h6M36 24h6M11 11l4 4M37 37l-4-4M37 11l-4 4M11 37l4-4" opacity=".7"/></g></symbol>
+  <radialGradient id="sealDome" cx="38%" cy="29%" r="80%"><stop offset="0" stop-color="#DFFCEC"/><stop offset="28%" stop-color="#62DC9F"/><stop offset="62%" stop-color="#1E8A53"/><stop offset="100%" stop-color="#062A19"/></radialGradient>
+  <radialGradient id="sealGloss" cx="36%" cy="26%" r="42%"><stop offset="0" stop-color="#ffffff" stop-opacity=".9"/><stop offset="60%" stop-color="#ffffff" stop-opacity=".15"/><stop offset="100%" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
+  <linearGradient id="sealRim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A6F2C8"/><stop offset="100%" stop-color="#04220F"/></linearGradient>
+  <symbol id="seal-d" viewBox="0 0 64 64">
+    <!-- extruded depth -->
+    <text x="13" y="48.1" font-family="'JetBrains Mono','Courier New',monospace" font-weight="800" font-size="48" fill="#072d1a">d</text>
+    <rect x="45.6" y="20.6" width="8.4" height="27" rx="1.4" fill="#072d1a"/>
+    <!-- front face (logo font) -->
+    <text x="11.4" y="46.5" font-family="'JetBrains Mono','Courier New',monospace" font-weight="800" font-size="48" fill="url(#sealDome)">d</text>
+    <rect x="44" y="19" width="8.4" height="27" rx="1.4" fill="#6FE8AC">
+      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.5;0.5;1" dur="1.1s" repeatCount="indefinite"/>
+    </rect>
+  </symbol>
+</defs></svg>
+
+<script src="assets/research.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var EASE=[0.16,1,0.3,1];
+
+  /* ---------------- VIEWS ---------------- */
+  var ASK='<div class="ask rv" data-d="3" id="ask">'+
+    '<div class="term"><div class="term-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="term-title">ask-your-board · delidec os <span class="pv">preview</span></span></div>'+
+    '<div class="term-body"><span class="term-prompt">&gt;</span>'+
+    '<input class="term-input" id="askInput" type="text" placeholder="ask your board a strategic question…" aria-label="Ask your board"/>'+
+    '<button class="term-send" id="askSend">Convene <span class="ar">&rarr;</span></button></div></div>'+
+    '<div class="ask-steps-h" id="askSteps">'+
+    '<div class="ask-step"><span class="si" data-icon="inputs"></span><div class="num">01</div><h4>Specialist Inputs</h4><p>Eight executives analyze from their own domain.</p></div>'+
+    '<div class="ask-step"><span class="si" data-icon="synthesis"></span><div class="num">02</div><h4>COO Synthesis</h4><p>Integrates inputs, models outcomes, recommends a path.</p></div>'+
+    '<div class="ask-step"><span class="si" data-icon="decision"></span><div class="num">03</div><h4>CEO Decision</h4><p>You weigh the dissent and make the call.</p></div>'+
+    '</div><p class="ask-note" id="askNote">Preview only — request a demo to ask the live board.</p></div>';
+
+  var views={
+    home:function(){return ''+
+      '<section class="hero">'+
+        '<span class="kicker rv">Delidec OS</span>'+
+        '<h1 class="rv" data-d="1">Eight minds. One clear <span class="accent">decision.</span></h1>'+
+        '<p class="hero-lede rv" data-d="2">Eight specialist executives analyze <b>independently</b>. A synthesis layer unifies every perspective into <b>one clear path</b> — you make the final call.</p>'+
+        ASK+
+      '</section>'+
+      '<section class="section"><div class="sec-head center"><span class="kicker rv">How it works</span><h2 class="h2 rv" data-d="1">From question to decision.</h2></div>'+
+        '<div class="steps">'+
+        '<div class="step-card rv" data-modal="h-ask" data-d="1"><div class="top"><span class="gtile" data-icon="ask"></span><span class="num">01</span></div><h3>Ask a strategic question</h3><p>Frame the decision you want clarity on — fundraise terms, a pricing change, a key hire.</p></div>'+
+        '<div class="arrow rv" data-d="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>'+
+        '<div class="step-card rv" data-modal="h-inputs" data-d="3"><div class="top"><span class="gtile" data-icon="inputs"></span><span class="num">02</span></div><h3>Eight specialists analyze</h3><p>Each executive runs independent analysis from their own domain — in parallel, on the record.</p></div>'+
+        '<div class="arrow rv" data-d="4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>'+
+        '<div class="step-card rv" data-modal="h-synth" data-d="4"><div class="top"><span class="gtile" data-icon="synthesis"></span><span class="num">03</span></div><h3>Synthesis. Decision.</h3><p>The COO unifies every insight into one path — dissent preserved. You make the final call.</p></div>'+
+        '</div></section>'+
+        '<section class="section" style="padding-top:0"><div class="proof">'+
+        '<div><span class="kicker rv">The artifact</span><h2 class="h2 rv" data-d="1">A decision you can defend.</h2><p class="lede rv" data-d="2">Every session ends in one object: the recommendation, a confidence band, who concurred and who dissented, graded citations, and a tamper-evident seal. The board advises — you decide.</p><div class="rv" data-d="3" style="margin-top:24px"><a class="btn btn-ghost" data-modal="memo">See the full memo →</a></div></div>'+
+        '<div class="memo rv" data-d="2" data-modal="memo"><div class="memo-bar"><span class="d" style="background:var(--a-clo)"></span><span class="d" style="background:var(--a-cmo)"></span><span class="d" style="background:var(--a-cfo)"></span><span class="lbl"><b>Board memo</b> · sealed</span><span class="ref">DLD·0xA17E</span></div><div class="memo-body"><div class="memo-q">Question · capital</div><div class="memo-rec">Take the bridge at a capped SAFE — but <em>not</em> at the proposed valuation.</div><div class="memo-meta"><div class="conf"><span class="track"><span class="fill"></span></span><span class="n">0.82 · HIGH</span></div><div class="tally"><b class="cc">7 concur</b> · <b class="dc">1 dissent</b></div></div><div class="memo-seal"><svg class="seal-mark" viewBox="0 0 64 64" aria-hidden="true"><use href="#seal-d"/></svg><div class="sx"><div class="s1">DELIDEC-sealed · tamper-evident</div><div class="s2">9f2c a17e dd04 b8e1 6c70 ee23</div></div></div></div></div>'+
+        '</div><p class="illus" style="max-width:var(--maxw);margin:12px auto 0;padding:0 var(--pad)">Illustrative — tap the memo for the full record</p></section>';
+    },
+    board:function(){
+      var b=[['coo','COO','Orchestration Layer','Aligns perspectives, weighs trade-offs, synthesizes clarity.','0s'],
+        ['cfo','CFO','Financial Lens','Financial modeling, capital allocation, risk &amp; scenarios.','.25s'],
+        ['cmo','CMO','Market Lens','Market dynamics, customer insights, growth &amp; brand.','.5s'],
+        ['clo','CLO','Legal Lens','Regulatory context, risk mitigation, contracts.','.75s'],
+        ['cto','CTO','Technology Lens','Tech landscape, architecture, feasibility.','1s'],
+        ['cso','CSO','Strategy Lens','Corporate strategy, M&amp;A, market intelligence, ESG.','1.25s'],
+        ['cpo','CPO','Product Lens','Product strategy, roadmaps, user value &amp; metrics.','1.5s'],
+        ['chro','CHRO','People Lens','Talent strategy, organization health, culture &amp; people.','1.75s']];
+      var cards=b.map(function(c,i){return '<div class="card board-card rv" data-modal="b-'+c[0]+'" data-d="'+((i%4)+1)+'" style="--cc:var(--a-'+c[0]+');--pd:'+c[4]+'"><span class="gtile" data-icon="'+c[0]+'"></span><div class="role">'+c[1]+'</div><div class="lens">'+c[2]+'</div><p class="desc">'+c[3]+'</p><div class="rule"></div></div>';}).join('');
+      return '<section class="intro"><span class="kicker rv">The board</span><h1 class="rv" data-d="1">Eight lenses on every decision.</h1>'+
+        '<p class="lede rv" data-d="2">Eight specialist executives, each with a distinct mandate — and the COO doubles as the orchestration layer, weighing every perspective into one synthesis. Tap any chair for its full competency model; the eight nodes of the mark above are these eight minds.</p></section>'+
+        '<section class="section" style="padding-top:0"><div class="grid g4">'+cards+'</div></section>';
+    },
+    research:function(){
+      var R=window.DLD_RESEARCH||{chairs:[],articles:[]};
+      var allIcon='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="5" r="1.8"/><circle cx="12" cy="5" r="1.8"/><circle cx="19" cy="5" r="1.8"/><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/><circle cx="5" cy="19" r="1.8"/><circle cx="12" cy="19" r="1.8"/><circle cx="19" cy="19" r="1.8"/></svg>';
+      var chips='<button type="button" class="chip on" data-chair="all"><span class="ci">'+allIcon+'</span><span class="cl">All</span></button>'+
+        R.chairs.map(function(ch){return '<button type="button" class="chip" data-chair="'+ch.k+'" style="--cc:var('+ch.cc+')" title="'+ch.name+' · '+ch.lens+'"><span class="ci" data-icon="'+ch.k+'"></span><span class="cl">'+ch.role+'</span></button>';}).join('');
+      var rows=R.articles.map(function(a,i){
+        return '<article class="post rv" data-modal="'+a.id+'" data-chair="'+a.ck+'"'+(a.body?' data-full':'')+' style="--cc:var('+a.cc+')">'+
+          '<div class="post-cover">'+cover(i)+'<span class="post-badge'+(a.body?' full':'')+'">'+(a.body?'Full paper':'Abstract')+'</span></div>'+
+          '<div class="post-head"><span class="av" data-icon="'+a.ck+'"></span><span class="who"><span class="nm">'+a.role+'</span><span class="hd">'+a.name+'</span></span></div>'+
+          '<div class="post-cap"><h4>'+a.title+'</h4><p>'+a.abstract+'</p><div class="post-meta">'+a.date+' &middot; Paper '+a.idx+' of 8</div></div>'+
+        '</article>';
+      }).join('');
+      return ''+
+      '<section class="intro"><span class="kicker rv">Research</span><h1 class="rv" data-d="1">How we train the board.</h1>'+
+      '<p class="lede rv" data-d="2">Capability without calibration is a liability. The board is built on frameworks, pressure-tested in simulation, aligned for safety, and measured continuously.</p></section>'+
+      '<section class="section" style="padding-top:0"><div class="grid g4">'+
+      '<div class="feat rv" data-modal="r-frameworks" data-d="1"><span class="gtile" data-icon="frameworks" style="margin-bottom:18px"></span><div class="num">01</div><h3>Domain Frameworks</h3><p>Expert frameworks from finance, operations, legal, technology, and people disciplines.</p></div>'+
+      '<div class="feat rv" data-modal="r-sims" data-d="2"><span class="gtile" data-icon="sims" style="margin-bottom:18px"></span><div class="num">02</div><h3>Decision Simulations</h3><p>Many business scenarios across markets, industries, and variables.</p></div>'+
+      '<div class="feat rv" data-modal="r-safety" data-d="3"><span class="gtile" data-icon="safety" style="margin-bottom:18px"></span><div class="num">03</div><h3>Alignment &amp; Safety</h3><p>Values-aligned objectives, constraint guardrails, and bias control.</p></div>'+
+      '<div class="feat rv" data-modal="r-loop" data-d="4"><span class="gtile" data-icon="loop" style="margin-bottom:18px"></span><div class="num">04</div><h3>Evaluation Loop</h3><p>Continuous evaluation and feedback drives ongoing improvement.</p></div>'+
+      '</div></section>'+
+      '<section class="section" style="padding-top:0"><div class="card rv" style="padding:clamp(28px,4vw,44px)"><span class="kicker">The thesis · to be earned</span>'+
+      '<h2 class="h3 rv" style="margin-top:12px;max-width:24ch">A claim is only as good as its test.</h2>'+
+      '<p class="lede rv" style="margin-top:14px">We are building an evaluation and calibration program so a stated confidence actually corresponds to outcomes over time. We will publish the method, not theatrical numbers.</p></div></section>'+
+      '<section class="section" style="padding-top:0"><div class="sec-head center"><span class="kicker rv">Publications</span><h2 class="h2 rv" data-d="1">The board, in depth.</h2>'+
+      '<p class="lede rv" data-d="2" style="margin:12px auto 0">Sixty-four papers across the eight chairs — the decision-making challenges each seat is built to navigate, on a daily cadence from 20 May 2026. Every post carries its author; filter by chair, and tap any to read it.</p></div>'+
+      '<div class="pub-filter rv" data-d="1">'+chips+'</div>'+
+      '<div class="feed" data-view="all">'+rows+'</div></section>';
+    },
+    security:function(){return ''+
+      '<section class="intro"><span class="kicker rv">Security &amp; governance</span><h1 class="rv" data-d="1"><span class="wordmark">delidec<i></i></span> produces inputs. You decide.</h1>'+
+      '<p class="lede rv" data-d="2">Built for the person accountable for the outcome: human-in-the-loop by design, audit-grade from day one, and honest about what is shipped versus what is in flight.</p></section>'+
+      '<section class="section" style="padding-top:0"><div class="grid g4">'+
+      '<div class="feat rv" data-modal="s-human" data-d="1"><span class="gtile" data-icon="human" style="margin-bottom:18px"></span><h3>Human-in-the-loop</h3><p>DELIDEC advises; a person signs. Below a confidence threshold the board escalates rather than answers.</p></div>'+
+      '<div class="feat rv" data-modal="s-claude" data-d="2"><span class="gtile" data-icon="claude" style="margin-bottom:18px"></span><h3>Built on Claude</h3><p>End-to-end on Anthropic&rsquo;s Claude. Your content is never used to train any model.</p></div>'+
+      '<div class="feat rv" data-modal="s-soc2" data-d="3"><span class="tag">In flight</span><span class="gtile" data-icon="safety" style="margin-bottom:18px"></span><h3>SOC 2 · EU AI Act</h3><p>SOC 2 Type I underway; EU AI Act day-one posture. AES-256 in transit and at rest.</p></div>'+
+      '<div class="feat rv" data-modal="s-trust" data-d="4"><span class="tag">Planned</span><span class="gtile" data-icon="cto" style="margin-bottom:18px"></span><h3>Trust center</h3><p>SSO/SAML, SCIM, audit-export, sub-processor list and data-flow diagram — built as we land it.</p></div>'+
+      '</div></section>'+
+      '<section class="section" style="padding-top:0"><div class="card rv" style="padding:clamp(26px,4vw,40px)"><span class="kicker">Reach the team</span>'+
+      '<h2 class="h3 rv" style="margin-top:12px;max-width:26ch">Security review or responsible disclosure.</h2>'+
+      '<p class="lede rv" style="margin-top:14px;max-width:64ch">For security questionnaires, the sub-processor list, or our data-flow diagram, write to <a href="mailto:security@delidec.com" style="color:var(--green-700)">security@delidec.com</a>. Found a vulnerability? Disclose it responsibly to the same address and we&rsquo;ll respond promptly. Enterprise security reviews are founder-led today via <a href="mailto:boris@delidec.com" style="color:var(--green-700)">boris@delidec.com</a>.</p></div></section>';
+    },
+    company:function(){return ''+
+      '<section class="intro"><span class="kicker rv">Company · pre-seed</span><h1 class="rv" data-d="1">Pre-seed. Open.</h1>'+
+      '<p class="lede rv" data-d="2">A category is forming: multi-agent deliberation crossed from demo to deployable, and the C-suite is the unclaimed adjacency in vertical AI. We keep the narrative big and the numbers honest.</p></section>'+
+      '<section class="section" style="padding-top:0"><div class="grid g4" style="margin-bottom:30px">'+
+      '<div class="feat rv" data-modal="c-round" data-d="1"><div class="num">Round</div><h3>Pre-seed · open</h3><p>SAFE · MFN cap. Funds the MVP and the first paid pilots, then gates to a seed on signed revenue.</p></div>'+
+      '<div class="feat rv" data-modal="c-why" data-d="2"><div class="num">Why now</div><h3>Judgment crossed the threshold</h3><p>A multi-agent C-suite was not buildable 24 months ago. It is buildable today, on Claude.</p></div>'+
+      '<div class="feat rv" data-modal="c-white" data-d="3"><div class="num">Whitespace</div><h3>No one owns the boardroom</h3><p>Legal, finance-research, and search each have a winner. Board-grade deliberation has none.</p></div>'+
+      '<div class="feat rv" data-modal="c-moat" data-d="4"><span class="tag">To be earned</span><div class="num">Moat</div><h3>The sealed corpus</h3><p>A proprietary record of decisions and outcomes — and a mark third parties ask to see.</p></div>'+
+      '</div>'+
+      '<div class="cta-card rv"><span class="kicker" style="display:block;margin-bottom:12px">Request access</span>'+
+      '<h2 class="h2">Bring the council to your next decision.</h2>'+
+      '<p>Enterprise access is founder-led today. Tell us the decision you&rsquo;re facing; we&rsquo;ll show you a worked memo on it.</p>'+
+      '<div class="row"><a class="btn btn-primary btn-lg" data-modal="request">Request a demo <span class="ar">→</span></a>'+
+      '<a class="btn btn-ghost btn-lg" data-route="board">Meet the board</a></div></div></section>';
+    },
+    privacy:function(){return ''+
+      '<section class="intro"><span class="kicker rv">Legal</span><h1 class="rv" data-d="1">Privacy notice.</h1>'+
+      '<p class="lede rv" data-d="2">A plain-language summary of how DELIDEC handles your data. A summary, not a substitute for the signed agreement — the DPA governs enterprise engagements.</p></section>'+
+      '<section class="section" style="padding-top:0"><div class="grid g3">'+
+      '<div class="feat rv" data-d="1"><h3>What we collect</h3><p>The decision context you submit, your account details, and standard usage logs. No marketing cookies.</p></div>'+
+      '<div class="feat rv" data-d="2"><h3>How it is used</h3><p>To run the deliberation and improve the product. Your content is never used to train any model — ours or our providers&rsquo;.</p></div>'+
+      '<div class="feat rv" data-d="3"><h3>Subprocessors</h3><p>Anthropic (inference) plus our hosting and auth providers. Full list and locations on request.</p></div>'+
+      '<div class="feat rv" data-d="1"><h3>Retention &amp; deletion</h3><p>Request export or deletion at any time. Encrypted in transit and at rest (AES-256).</p></div>'+
+      '<div class="feat rv" data-d="2"><h3>Your rights</h3><p>GDPR / EU data-handling terms on request. EU AI Act: limited-risk posture, human-in-the-loop.</p></div>'+
+      '<div class="feat rv" data-d="3"><h3>Contact &amp; DPA</h3><p>Email <a href="mailto:privacy@delidec.com" style="color:var(--green-700)">privacy@delidec.com</a> for data, export, deletion, and DPA requests. A DPA is available for paid plans on request.</p></div>'+
+      '</div></section>';
+    },
+    terms:function(){return ''+
+      '<section class="intro"><span class="kicker rv">Legal</span><h1 class="rv" data-d="1">Terms of Service.</h1>'+
+      '<p class="lede rv" data-d="2">The terms that govern your use of the DELIDEC website and product — plain where it can be, precise where it must be. For enterprise engagements, a signed master agreement controls and prevails over anything here.</p></section>'+
+      '<section class="section" style="padding-top:0"><div class="prose rv" data-d="1">'+
+        '<div class="doc-meta"><span>Effective 1 June 2026</span><span>DELIDEC Corporation · Delaware, USA</span><span>v1.0</span></div>'+
+        '<section><h3><span class="n">01</span>Agreement to these terms</h3><p>These Terms of Service (the &ldquo;Terms&rdquo;) are a binding agreement between you — and the organization you represent (&ldquo;you&rdquo;) — and DELIDEC Corporation, a Delaware corporation (&ldquo;DELIDEC&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;). They cover the delidec.com website, the DELIDEC decision-support product, and any related demos, previews, or communications (together, the &ldquo;Service&rdquo;). By accessing the Service, requesting access, or signing an order form, you accept these Terms. If you do not agree, do not use the Service.</p></section>'+
+        '<section><h3><span class="n">02</span>What DELIDEC is — and is not</h3><p>DELIDEC convenes a panel of specialist AI executives that analyze a decision independently, and a synthesis layer that unifies their perspectives into a single recommended path with dissent preserved. The Service produces <b>decision-support inputs</b>. It does not make decisions — a human always does.</p><p>Outputs are <b>not legal, financial, tax, investment, medical, or other professional advice</b>, and no fiduciary, advisory, or professional-client relationship is created by your use of the Service. You are solely responsible for the decisions you make and the actions you take.</p></section>'+
+        '<section><h3><span class="n">03</span>Human-in-the-loop &amp; accountability</h3><p>DELIDEC is designed against automation bias. The board advises; a person signs. Below a defined confidence threshold the board escalates a question to a human rather than answering it, and dissent is preserved on the record rather than collapsed. You remain accountable for reviewing every output and for the final call.</p></section>'+
+        '<section><h3><span class="n">04</span>Eligibility &amp; accounts</h3><p>You must be at least 18 and able to form a binding contract. Where you act for an organization, you represent that you are authorized to bind it. You are responsible for the accuracy of your registration details, for safeguarding any credentials, and for all activity under your account. Notify us promptly of any unauthorized use.</p></section>'+
+        '<section><h3><span class="n">05</span>Acceptable use</h3><p>You agree not to use the Service to:</p><ul><li>break any applicable law, regulation, or third-party right, including intellectual-property and privacy rights;</li><li>pursue a use classified as <b>prohibited or high-risk</b> under the EU AI Act, or any use requiring professional licensure DELIDEC does not hold;</li><li>submit another person&rsquo;s confidential or personal data without a lawful basis and the authority to do so;</li><li>reverse-engineer, scrape, resell, or build a competing product from the Service, or circumvent its security or rate limits;</li><li>misrepresent an output as a guaranteed outcome, certified advice, or a human professional&rsquo;s judgment.</li></ul></section>'+
+        '<section><h3><span class="n">06</span>Your content &amp; data</h3><p>You retain all rights to the decision context, documents, and other materials you submit (&ldquo;Customer Content&rdquo;). You grant DELIDEC a limited license to process Customer Content solely to operate and improve the Service for you. <b>Your content is never used to train any model</b> — ours or our providers&rsquo;. We hold Customer Content in confidence and apply encryption in transit and at rest (AES-256). Our handling of personal data is described in the <a data-route="privacy">privacy notice</a>; for paid plans a Data Processing Addendum is available on request.</p></section>'+
+        '<section><h3><span class="n">07</span>Intellectual property &amp; the sealed mark</h3><p>The Service — its software, design, orchestration layer, and the <b>DELIDEC-sealed</b> mark and tamper-evident seal — is owned by DELIDEC and protected by law. We grant you a limited, non-exclusive, non-transferable right to use the Service under these Terms. As between the parties, a generated memo is yours to use for your decision; the underlying system, templates, and marks remain ours. If you send us feedback, you grant us a perpetual, royalty-free license to use it without obligation.</p></section>'+
+        '<section><h3><span class="n">08</span>Beta status &amp; availability</h3><p>The Service is pre-MVP and offered on an early-access basis. Features may change, pause, or be withdrawn, and previews may not reflect final behavior. We provide <b>no uptime or availability warranty</b> until a service-level agreement is signed; enterprise SLAs are available as part of a master agreement.</p></section>'+
+        '<section><h3><span class="n">09</span>Third-party services</h3><p>The Service runs on Anthropic&rsquo;s Claude and a small set of hosting, authentication, and analytics sub-processors. Your use is also subject to those providers&rsquo; terms where applicable. We disclose our sub-processors and their locations on request, and maintain a documented model-fallback posture. We are not responsible for third-party services outside our control.</p></section>'+
+        '<section><h3><span class="n">10</span>Disclaimers</h3><p>To the maximum extent permitted by law, the Service is provided <b>&ldquo;as is&rdquo; and &ldquo;as available&rdquo;</b>, without warranties of any kind — express, implied, or statutory — including merchantability, fitness for a particular purpose, non-infringement, accuracy, or that outputs are complete, reliable, or error-free. Outputs are probabilistic and may be wrong; you must verify anything material before relying on it.</p></section>'+
+        '<section><h3><span class="n">11</span>Limitation of liability</h3><p>To the maximum extent permitted by law, neither party is liable for indirect, incidental, special, consequential, or punitive damages, or for lost profits, revenue, data, or goodwill. DELIDEC&rsquo;s total aggregate liability arising out of or relating to the Service will not exceed the greater of the amounts you paid to DELIDEC in the three months before the claim, or US$100. Where a signed agreement specifies a different cap, that agreement controls.</p></section>'+
+        '<section><h3><span class="n">12</span>Indemnification</h3><p>You will defend and indemnify DELIDEC against third-party claims arising from your Customer Content, your use of the Service, or your breach of these Terms — except to the extent caused by DELIDEC&rsquo;s own misconduct.</p></section>'+
+        '<section><h3><span class="n">13</span>Term &amp; termination</h3><p>These Terms apply while you use the Service. You may stop at any time. We may suspend or terminate access for breach, legal risk, or to protect the Service or its users. On request we will make your Customer Content available for export and then delete it, subject to legal retention obligations. Provisions that by their nature should survive — ownership, disclaimers, liability, indemnity, and governing law — survive termination.</p></section>'+
+        '<section><h3><span class="n">14</span>Changes</h3><p>We may update the Service and these Terms as the product and the law evolve. For material changes we will update the effective date above and, where appropriate, give notice. Continued use after a change means you accept the revised Terms.</p></section>'+
+        '<section><h3><span class="n">15</span>Governing law &amp; disputes</h3><p>These Terms are governed by the laws of the State of Delaware, USA, without regard to conflict-of-laws rules. The state and federal courts located in Delaware have exclusive jurisdiction, and each party consents to venue there — except that either party may seek injunctive relief to protect its intellectual property in any competent court.</p></section>'+
+        '<section><h3><span class="n">16</span>Contact</h3><p>Questions about these Terms: <a href="mailto:legal@delidec.com">legal@delidec.com</a> — DELIDEC Corporation, Delaware, USA.</p></section>'+
+        '<div class="doc-note"><b>Not legal advice.</b> This document orients you to how the Service works and the basis on which it is offered; it does not replace counsel. For enterprise engagements, a signed master services agreement and its order forms control and prevail over these Terms wherever they differ.</div>'+
+      '</div></section>';
+    }
+  };
+
+  /* ---------------- ROUTER + page transitions ---------------- */
+  var view=document.getElementById('view'), current=null, animating=false;
+  function routeFromHash(){var h=(location.hash||'').replace(/^#\/?/,'');return views[h]?h:'home';}
+  function setActive(route){document.querySelectorAll('#navlinks a').forEach(function(a){a.classList.toggle('active',a.getAttribute('data-route')===route);});}
+  function afterRender(route){
+    view.querySelectorAll('[data-icon]').forEach(function(el){el.innerHTML='<svg viewBox="0 0 48 48"><use href="#ic-'+el.getAttribute('data-icon')+'"/></svg>';});
+    var rvs=view.querySelectorAll('.rv');
+    if(reduce||!('IntersectionObserver'in window)){rvs.forEach(function(e){e.classList.add('in');});}
+    else{var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.12,rootMargin:'0px 0px -6% 0px'});rvs.forEach(function(e){io.observe(e);});}
+    if(route==='home')wireAsk();
+    if(route==='research')wireResearch();
+  }
+  function wireResearch(){
+    var bar=view.querySelector('.pub-filter'),feed=view.querySelector('.feed');
+    if(!bar||!feed)return;
+    bar.addEventListener('click',function(e){var b=e.target.closest('[data-chair]');if(!b)return;feed.setAttribute('data-view',b.getAttribute('data-chair'));bar.querySelectorAll('.chip').forEach(function(c){c.classList.toggle('on',c===b);});window.scrollTo({top:bar.getBoundingClientRect().top+scrollY-110,behavior:'smooth'});});
+  }
+  /* abstract cover: the tesseract projected at a paper-specific 4D orientation,
+     edges drawn as depth-scaled 3D bars (rounded body + lit core). Deterministic per paper. */
+  function cover(seed){
+    var s=(seed*2654435761)>>>0;function rnd(){s=(s*1664525+1013904223)>>>0;return s/4294967296;}
+    var a1=rnd()*6.283,a2=rnd()*6.283,a3=rnd()*6.283,a4=rnd()*6.283,a5=rnd()*6.283;
+    var V=[],i,k;for(i=0;i<16;i++)V.push([(i&1?1:-1),(i&2?1:-1),(i&4?1:-1),(i&8?1:-1)]);
+    function rot(v,a,b,ang){var c=Math.cos(ang),sn=Math.sin(ang),va=v[a],vb=v[b];v[a]=va*c-vb*sn;v[b]=va*sn+vb*c;}
+    var D4=2.7,D3=4.5,W=320,H=200,cx=W/2,cy=H/2,RX=[],RY=[],DEP=[],maxR=0.0001;
+    for(i=0;i<16;i++){
+      var v=[V[i][0],V[i][1],V[i][2],V[i][3]];
+      rot(v,0,3,a1);rot(v,1,3,a2);rot(v,2,3,a3);rot(v,0,2,a4);rot(v,1,2,a5);
+      var f4=D4/(D4-v[3]),x=v[0]*f4,y=v[1]*f4,z=v[2]*f4,f3=D3/(D3-z),rx=x*f3,ry=y*f3;
+      RX.push(rx);RY.push(ry);DEP.push(f3);
+      var m=Math.max(Math.abs(rx),Math.abs(ry));if(m>maxR)maxR=m;
+    }
+    var SC=(H*0.40)/maxR,P=[];for(i=0;i<16;i++)P.push([cx+RX[i]*SC,cy+RY[i]*SC]);
+    var dmin=Math.min.apply(null,DEP),dmax=Math.max.apply(null,DEP),drange=(dmax-dmin)||1;
+    var E=[];for(var a=0;a<16;a++)for(var b=a+1;b<16;b++){var d=0;for(k=0;k<4;k++)if(V[a][k]!==V[b][k])d++;if(d===1)E.push([a,b]);}
+    E.sort(function(p,q){return (DEP[p[0]]+DEP[p[1]])-(DEP[q[0]]+DEP[q[1]]);});
+    var g='<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid slice" aria-hidden="true">';
+    E.forEach(function(e){
+      var t=((DEP[e[0]]+DEP[e[1]])/2-dmin)/drange,w=1.1+t*3.6,op=0.16+t*0.5,
+        x1=P[e[0]][0].toFixed(1),y1=P[e[0]][1].toFixed(1),x2=P[e[1]][0].toFixed(1),y2=P[e[1]][1].toFixed(1);
+      g+='<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="currentColor" stroke-opacity="'+op.toFixed(2)+'" stroke-width="'+w.toFixed(2)+'" stroke-linecap="round"/>';
+      g+='<line class="hl" x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="#eafff5" stroke-opacity="'+(t*0.3).toFixed(2)+'" stroke-width="'+(w*0.3).toFixed(2)+'" stroke-linecap="round"/>';
+    });
+    var ord=[];for(i=0;i<16;i++)ord.push(i);ord.sort(function(p,q){return DEP[p]-DEP[q];});
+    ord.forEach(function(j){var t=(DEP[j]-dmin)/drange,r=1.5+t*3.2;
+      g+='<circle cx="'+P[j][0].toFixed(1)+'" cy="'+P[j][1].toFixed(1)+'" r="'+r.toFixed(2)+'" fill="currentColor" fill-opacity="'+(0.45+t*0.55).toFixed(2)+'"/>';});
+    return g+'</svg>';
+  }
+  function render(route){view.innerHTML=views[route]();afterRender(route);setActive(route);setPose(route);current=route;}
+  function navigate(route){
+    route=views[route]?route:'home';
+    if(route===current||animating){if(route!==current)location.hash='#/'+route;return;}
+    if(location.hash!=='#/'+route)location.hash='#/'+route;
+    if(reduce||typeof view.animate!=='function'){window.scrollTo(0,0);render(route);return;}
+    animating=true;
+    var out=view.animate([{opacity:1,transform:'translateY(0) scale(1)',filter:'blur(0px)'},{opacity:0,transform:'translateY(-16px) scale(.985)',filter:'blur(7px)'}],{duration:300,easing:'cubic-bezier(.16,1,.3,1)',fill:'forwards'});
+    out.onfinish=function(){
+      window.scrollTo(0,0);render(route);
+      var inn=view.animate([{opacity:0,transform:'translateY(24px) scale(.99)',filter:'blur(7px)'},{opacity:1,transform:'none',filter:'blur(0px)'}],{duration:560,easing:'cubic-bezier(.16,1,.3,1)',fill:'forwards'});
+      inn.onfinish=function(){view.style.opacity='';view.style.transform='';view.style.filter='';animating=false;};
+    };
+  }
+  document.addEventListener('click',function(e){var a=e.target.closest('[data-route]');if(a){e.preventDefault();navigate(a.getAttribute('data-route'));}});
+  window.addEventListener('hashchange',function(){navigate(routeFromHash());});
+
+  /* nav shrink + progress */
+  var nav=document.getElementById('nav'),prog=document.getElementById('progress');
+  addEventListener('scroll',function(){var y=scrollY||0;nav.classList.toggle('shrink',y>10);var h=document.documentElement.scrollHeight-innerHeight;prog.style.transform='scaleX('+(h>0?Math.min(y/h,1):0)+')';},{passive:true});
+
+  /* ask preview */
+  function wireAsk(){var steps=[].slice.call(view.querySelectorAll('#askSteps .ask-step')),note=view.querySelector('#askNote'),input=view.querySelector('#askInput'),send=view.querySelector('#askSend');
+    function run(){steps.forEach(function(s){s.classList.remove('lit');});steps.forEach(function(s,i){setTimeout(function(){s.classList.add('lit');},i*420);});setTimeout(function(){if(note)note.classList.add('show');},steps.length*420);}
+    if(send)send.addEventListener('click',run);if(input)input.addEventListener('keydown',function(e){if(e.key==='Enter')run();});
+    if(input&&!reduce){var ex=['should we raise now, or wait two quarters?','raise prices 15% — defend or hold?','make the VP Engineering hire this month?','enter the EU market in Q3?'],si=0,ci=0,del=false,on=true;
+      input.addEventListener('focus',function(){on=false;input.setAttribute('placeholder','ask your board a strategic question…');});
+      input.addEventListener('input',function(){on=false;});
+      (function tw(){if(!on||!document.body.contains(input))return;var s=ex[si];if(!del){ci++;if(ci>s.length){del=true;return void setTimeout(tw,1600);}}else{ci--;if(ci<=0){del=false;ci=0;si=(si+1)%ex.length;}}input.setAttribute('placeholder',s.slice(0,ci)+'▋');setTimeout(tw,del?30:62);})();}}
+
+  /* ---------------- GLOBAL TESSERACT ---------------- */
+  var POSES={
+    home:{ry:0.55,rx:-0.18,sc:1.5,x:0.6,y:-0.05},
+    board:{ry:1.55,rx:0.18,sc:1.18,x:-1.7,y:0.2},
+    research:{ry:2.5,rx:-0.4,sc:1.05,x:1.75,y:0.3},
+    security:{ry:0.2,rx:0.5,sc:1.18,x:-1.6,y:0.05},
+    company:{ry:3.05,rx:-0.12,sc:1.05,x:1.65,y:-0.2}
+  };
+  var pose={ry:0.55,rx:-0.18,sc:1.5,x:0.6,y:-0.05};
+  function setPose(route){var p=POSES[route]||POSES.home;pose.ry=p.ry;pose.rx=p.rx;pose.sc=p.sc;pose.x=p.x;pose.y=p.y;}
+
+  (function(){
+    var canvas=document.getElementById('tess');
+    if(!window.THREE){return;}
+    var renderer;try{renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:true,powerPreference:'high-performance'});}catch(e){return;}
+    renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.08;renderer.outputEncoding=THREE.sRGBEncoding;
+    var scene=new THREE.Scene();var camera=new THREE.PerspectiveCamera(36,1,0.1,100);camera.position.set(0,0,6.4);
+    var group=new THREE.Group();scene.add(group);
+    (function(){var c=document.createElement('canvas');c.width=1024;c.height=512;var x=c.getContext('2d');var g=x.createLinearGradient(0,0,0,512);g.addColorStop(0,'#14241D');g.addColorStop(.5,'#0C1813');g.addColorStop(1,'#060D0A');x.fillStyle=g;x.fillRect(0,0,1024,512);function gl(cx,cy,r,col){var rg=x.createRadialGradient(cx,cy,0,cx,cy,r);rg.addColorStop(0,col);rg.addColorStop(1,'rgba(0,0,0,0)');x.fillStyle=rg;x.fillRect(0,0,1024,512);}gl(300,120,240,'rgba(120,210,170,.45)');gl(780,150,200,'rgba(79,224,168,.3)');var tex=new THREE.CanvasTexture(c);tex.mapping=THREE.EquirectangularReflectionMapping;tex.encoding=THREE.sRGBEncoding;var pm=new THREE.PMREMGenerator(renderer);pm.compileEquirectangularShader();scene.environment=pm.fromEquirectangular(tex).texture;tex.dispose();})();
+    var hemi=new THREE.HemisphereLight(0x7fc0a8,0x0a1f16,0.14);scene.add(hemi);
+    var key=new THREE.DirectionalLight(0xcfe6da,0.42);key.position.set(3,9,5);scene.add(key);
+    var fill=new THREE.DirectionalLight(0x4FE0A8,0.18);fill.position.set(-5,1,-3);scene.add(fill);
+    var core=new THREE.PointLight(0x4FE0A8,0.62,8,2);scene.add(core);
+    var barMat=new THREE.MeshPhysicalMaterial({color:0x050d08,emissive:0x040c07,emissiveIntensity:0.08,metalness:0.0,roughness:0.75,clearcoat:0.25,clearcoatRoughness:0.6,envMapIntensity:0.12});
+    window.__tessTheme=function(dark){if(dark){barMat.color.setHex(0x050d08);barMat.emissive.setHex(0x040c07);barMat.emissiveIntensity=0.08;barMat.envMapIntensity=0.12;key.intensity=0.42;hemi.intensity=0.14;fill.intensity=0.18;core.intensity=0.62;}else{barMat.color.setHex(0xa9bdb2);barMat.emissive.setHex(0x465d52);barMat.emissiveIntensity=0.05;barMat.envMapIntensity=0.5;key.intensity=1.5;hemi.intensity=0.95;fill.intensity=0.35;core.intensity=0.45;}};
+    try{window.__tessTheme(document.documentElement.getAttribute('data-theme')!=='light');}catch(e){}
+    var CHAIRS=[0x6DD8E0,0x4FE0A8,0xF2B547,0xE07A7A,0xB098E5,0xA8F0CC,0xFF9B7A,0xE5D17A];
+    var nodeMats=[];for(var ni=0;ni<16;ni++){nodeMats.push(new THREE.MeshPhysicalMaterial({color:0x0c2c1d,emissive:0x104a2e,emissiveIntensity:0.16,metalness:0,roughness:0.55,clearcoat:0.3,clearcoatRoughness:0.35,envMapIntensity:0.22}));}
+    var V4=[];for(var i=0;i<16;i++)V4.push([(i&1)?1:-1,(i&2)?1:-1,(i&4)?1:-1,(i&8)?1:-1]);
+    var EDGES=[];for(var a=0;a<16;a++)for(var b2=a+1;b2<16;b2++){var d=0;for(var k=0;k<4;k++)if(V4[a][k]!==V4[b2][k])d++;if(d===1)EDGES.push([a,b2]);}
+    var DIST=3.2,PROJ=4.4,fMin=PROJ/(DIST+2),fMax=PROJ/(DIST-2);var nfac=function(f){return Math.max(0,Math.min(1,(f-fMin)/(fMax-fMin)));};
+    var tubeGeo=new THREE.CylinderGeometry(1,1,1,18,1),ballGeo=new THREE.IcosahedronGeometry(1,0);
+    var UP=new THREE.Vector3(0,1,0),_d=new THREE.Vector3(),_m=new THREE.Vector3(),_q=new THREE.Quaternion();
+    var cores=[];EDGES.forEach(function(){var c=new THREE.Mesh(tubeGeo,barMat);group.add(c);cores.push(c);});
+    var balls=[];for(i=0;i<16;i++){var bb=new THREE.Mesh(ballGeo,nodeMats[i]);group.add(bb);balls.push(bb);}
+    // (intro D removed — extruded d now lives in the favicon)
+    var ANG={xw:0,yw:0,zw:0};var P3=[];for(i=0;i<16;i++)P3.push(new THREE.Vector3());var FAC=new Array(16);
+    function rot(v,a,b,ang){var c=Math.cos(ang),s=Math.sin(ang),va=v[a],vb=v[b];v[a]=va*c-vb*s;v[b]=va*s+vb*c;}
+    function project(){for(var i=0;i<16;i++){var v=[V4[i][0]*0.9,V4[i][1]*0.9,V4[i][2]*0.9,V4[i][3]*0.9];rot(v,0,3,ANG.xw);rot(v,1,3,ANG.yw);rot(v,2,3,ANG.zw);var f=PROJ/(DIST-v[3]);FAC[i]=f;P3[i].set(v[0]*f,v[1]*f,v[2]*f);}}
+    function setEdge(k,p1,p2,f1,f2){_d.subVectors(p2,p1);var len=_d.length();_m.addVectors(p1,p2).multiplyScalar(0.5);_q.setFromUnitVectors(UP,_d.normalize());var nf=nfac((f1+f2)/2),r=0.094+nf*0.034;var c=cores[k];c.position.copy(_m);c.quaternion.copy(_q);c.scale.set(r,len,r);}
+    var mx=0,my=0,tmx=0,tmy=0;addEventListener('pointermove',function(e){tmx=e.clientX/innerWidth-0.5;tmy=e.clientY/innerHeight-0.5;},{passive:true});
+    var cur={ry:pose.ry,rx:pose.rx,sc:pose.sc,x:pose.x,y:pose.y};
+    function size(){var w=innerWidth,h=innerHeight,pr=Math.min(devicePixelRatio,2);var nw=Math.floor(w*pr),nh=Math.floor(h*pr);if(canvas.width!==nw||canvas.height!==nh){renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();camera.position.z=(w<700)?8.2:6.4;}}
+    var clock=new THREE.Clock(),intro=0,idle=0;
+    function frame(){requestAnimationFrame(frame);size();var dt=Math.min(clock.getDelta(),0.05);intro=Math.min(1,intro+dt/2);
+      if(!reduce){ANG.xw+=dt*0.17;ANG.yw+=dt*0.1;ANG.zw+=dt*0.06;idle+=dt*0.05;}
+      project();for(var k=0;k<EDGES.length;k++){var ed=EDGES[k];setEdge(k,P3[ed[0]],P3[ed[1]],FAC[ed[0]],FAC[ed[1]]);}
+      for(var i=0;i<16;i++){var nf=nfac(FAC[i]),r=(0.078+nf*0.024)*0.9;balls[i].position.copy(P3[i]);balls[i].scale.set(r,r,r);}
+      var T=clock.elapsedTime;
+      if(!reduce){var ne=0.15+0.06*Math.sin(T*1.05);for(var hw=0;hw<16;hw++){nodeMats[hw].emissiveIntensity=ne;}barMat.emissiveIntensity=0.12+0.05*Math.sin(T*1.05);core.intensity=0.5+0.16*Math.sin(T*1.2);}
+      core.position.set(Math.sin(T*0.5),0,Math.cos(T*0.5));
+      cur.ry+=(pose.ry-cur.ry)*0.05;cur.rx+=(pose.rx-cur.rx)*0.05;cur.sc+=(pose.sc-cur.sc)*0.05;cur.x+=(pose.x-cur.x)*0.05;cur.y+=(pose.y-cur.y)*0.05;
+      mx+=(tmx-mx)*0.05;my+=(tmy-my)*0.05;var sR=(scrollY||0)*0.0005;
+      group.rotation.y=cur.ry+idle+mx*0.4+sR;group.rotation.x=Math.max(-1.1,Math.min(1.1,cur.rx+my*0.28));
+      group.position.set(cur.x,cur.y,0);group.scale.setScalar(cur.sc*(0.92+0.08*intro));
+      renderer.render(scene,camera);}
+    frame();
+    addEventListener('resize',size);setTimeout(size,150);setTimeout(size,700);
+  })();
+
+  /* boot */
+  render(routeFromHash());
+  setActive(routeFromHash());
+})();
+</script>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var LV={EXPERT:96,ADVANCED:78,PROFICIENT:58};
+  var MODALS={
+    'b-coo':{icon:'coo',eye:'Chief Operating Officer · Orchestration',title:'The Operator on Watch',lede:'Not a senior manager — the chair that makes the company actually work, and the layer that synthesizes the council&rsquo;s verdict.',pillars:['Execution Master','Process Architect','Scale Builder','Cross-functional Integrator','Performance Culture','CEO Deputy'],skills:[['Operations Strategy Design','EXPERT'],['P&amp;L &amp; Cost Management','EXPERT'],['OKR &amp; Performance Systems','EXPERT'],['Cross-functional Leadership','EXPERT'],['Process Excellence (Lean/6&sigma;)','ADVANCED'],['Change Management','ADVANCED']],does:'In your board, the COO weighs every chair&rsquo;s input, resolves the trade-offs, and writes the single <b>recommended path</b> — with dissent preserved on the record.'},
+    'b-cfo':{icon:'cfo',eye:'Chief Financial Officer · Finance',title:'The Vault Keeper',lede:'Not the chief accountant — Steward, Operator, Catalyst and Strategist at once.',pillars:['Steward','Operator','Catalyst','Strategist','Digital Finance','Talent Architect'],skills:[['IFRS / US GAAP','EXPERT'],['Financial Modelling (3-statement + LBO)','EXPERT'],['FP&amp;A / Rolling Forecast','EXPERT'],['M&amp;A / Valuation','ADVANCED'],['Treasury Management','ADVANCED'],['Investor Relations','ADVANCED']],does:'Names the <b>cost of the bet</b>: runway, unit economics, scenarios and the financing path.'},
+    'b-cmo':{icon:'cmo',eye:'Chief Marketing Officer · Market',title:'The Narrative Architect',lede:'Not a director of advertising — manages conversion, brand and category across three time horizons.',pillars:['Growth Driver','Brand Architect','Customer Champion','Data &amp; Tech Lead','Commercial Partner','Culture Catalyst'],skills:[['Brand Strategy &amp; Positioning','EXPERT'],['Customer Research &amp; Insights','EXPERT'],['Marketing ROI','EXPERT'],['Performance / Growth Marketing','ADVANCED'],['GTM &amp; Product Marketing','ADVANCED'],['Marketing Analytics &amp; MMM','ADVANCED']],does:'Owns <b>positioning, demand and the market-timing</b> of the decision.'},
+    'b-clo':{icon:'clo',eye:'Chief Legal Officer · Legal',title:'The Shield Bearer',lede:'Not a contract drafter — helps the business say &ldquo;yes&rdquo; safely.',pillars:['Legal Guardian','Strategic Advisor','Compliance Architect','Deal Maker','Regulator Navigator','Legal Ops'],skills:[['Corporate Law &amp; Governance','EXPERT'],['M&amp;A — Structuring &amp; SPA','EXPERT'],['Commercial Contracts','EXPERT'],['Compliance &amp; Anti-Corruption','ADVANCED'],['International Arbitration','ADVANCED'],['Data Privacy (GDPR+)','PROFICIENT']],does:'Flags <b>regulatory exposure, IP and contract risk</b> — and the escalation triggers that route a question to human counsel.'},
+    'b-cto':{icon:'cto',eye:'Chief Technology Officer · Technology',title:'The Systems Architect',lede:'Not the head programmer — balances build quality, speed and technical risk.',pillars:['System Design','AI/ML Strategy','Engineering Org','Cybersecurity','Platform Economics','Technical Foresight'],skills:[['System Design &amp; Architecture','EXPERT'],['AI/ML Strategy &amp; Deployment','EXPERT'],['Engineering Organisation Design','ADVANCED'],['Cybersecurity Architecture','ADVANCED'],['Build-vs-Buy &amp; Infra Cost','ADVANCED'],['Data Platform','PROFICIENT']],does:'Runs <b>build-vs-buy</b>, names the architectural runway and the security posture.'},
+    'b-cso':{icon:'cso',eye:'Chief Strategy Officer · Strategy',title:'The Long Game',lede:'Not a consultant on retainer — translates environmental complexity into a clear strategic path.',pillars:['Corporate Strategy','M&amp;A &amp; Portfolio','Market Intelligence','Strategic Execution','ESG &amp; Sustainability','CEO Advisor'],skills:[['Corporate Strategy Design','EXPERT'],['Scenario Planning &amp; Foresight','EXPERT'],['Competitive Cartography','ADVANCED'],['M&amp;A Strategy &amp; Pipeline','ADVANCED'],['ESG &amp; Sustainable Strategy','ADVANCED'],['Portfolio Theory','PROFICIENT']],does:'Owns the <b>5-year arc</b>, the off-ramp and the competitive map.'},
+    'b-cpo':{icon:'cpo',eye:'Chief Product Officer · Product',title:'The Vision Setter',lede:'Not a senior PM — owns product vision, discovery, delivery and growth.',pillars:['Vision Setter','Strategy Architect','Discovery Engine','Delivery Optimizer','Growth Driver','PM Org Leader'],skills:[['Product Vision &amp; Strategy','EXPERT'],['Customer Discovery','EXPERT'],['Roadmap &amp; Prioritisation','EXPERT'],['Product Metrics &amp; Analytics','ADVANCED'],['Monetisation &amp; PLG','ADVANCED'],['A/B Testing &amp; Experimentation','ADVANCED']],does:'Names the <b>order of build</b> and where product value compounds.'},
+    'b-chro':{icon:'chro',eye:'Chief Human Resources Officer · People',title:'The People Architect',lede:'Not the head of HR admin — talent, culture, compensation and transformation.',pillars:['People Architect','Talent Engine','Culture Guardian','C&amp;B Strategist','Transformation Partner','Data-driven People'],skills:[['Talent Acquisition Strategy','EXPERT'],['Compensation &amp; Benefits Design','EXPERT'],['Leadership Development / HiPo','EXPERT'],['Organisational Design','ADVANCED'],['Culture &amp; Engagement','ADVANCED'],['People Analytics','ADVANCED']],does:'Owns the <b>headcount memo</b>: who to hire, how to pay, how to retain.'},
+    'r-frameworks':{icon:'frameworks',eye:'Research · 01',title:'Domain Frameworks',lede:'Each chair reasons inside the canonical frameworks of its discipline — not generic advice.',listLabel:'The frameworks',list:['McKinsey Operations Excellence (COO)','ACC CLO Competency Model (CLO)','McKinsey Growth Office (CMO)','Marty Cagan / SVPG (CPO)','Korn Ferry &amp; Josh Bersin (CHRO)','BCG Platinion (CTO)'],does:'The board doesn&rsquo;t improvise — it applies the <b>same frameworks a real C-suite is hired for</b>.'},
+    'r-sims':{icon:'sims',eye:'Research · 02',title:'Decision Simulations',lede:'The board is pressure-tested across many business scenarios before it ever sees yours.',listLabel:'What is varied',list:['Markets and industries','Stage and capital structure','Adversarial and edge cases','Cross-functional conflict'],does:'Breadth of simulated decisions is how the board learns to <b>disagree well</b>.'},
+    'r-safety':{icon:'safety',eye:'Research · 03',title:'Alignment &amp; Safety',lede:'Capability without oversight is a liability in governance.',listLabel:'The guardrails',list:['Values-aligned objectives','Constraint guardrails','Bias control','Sub-0.6 confidence escalates to a human'],does:'Designed <b>against automation bias</b> — it surfaces uncertainty and dissent rather than hiding them.'},
+    'r-loop':{icon:'loop',eye:'Research · 04',title:'Evaluation Loop',lede:'A stated confidence must correspond to outcomes over time.',listLabel:'The program',list:['Held-out decision set','Calibration curves for confidence bands','Citation verification (not just grading)','Red-team probes on synthesis'],does:'We publish the <b>method, not theatrical numbers</b> — calibration is the precondition for the trust claim.'},
+    's-human':{icon:'human',eye:'Governance',title:'Human-in-the-loop',lede:'DELIDEC produces inputs; a person decides.',listLabel:'How it works',list:['The board advises; a human signs','Below a confidence threshold it escalates rather than answers','Dissent is preserved on the record','EU AI Act-aligned accountability'],does:'You are the CEO. The board never makes the call — it makes the call <b>defensible</b>.'},
+    's-claude':{icon:'claude',eye:'Governance · foundation',title:'Built on Claude',lede:'End-to-end on Anthropic&rsquo;s Claude.',listLabel:'Why it matters',list:['Constitutional dissent-preservation is native','Long context for multi-chair deliberation','0% training-data retention on your content','Documented model fallback'],does:'A strength for capability and a <b>managed concentration risk</b> for procurement — stated honestly.'},
+    's-soc2':{icon:'safety',eye:'Governance · in flight',title:'SOC 2 · EU AI Act',lede:'Compliance posture shipped as a product surface, not an afterthought.',listLabel:'Status',list:['SOC 2 Type I — evidence collection underway','EU AI Act — day-one risk posture','AES-256 in transit and at rest','Named sub-processors'],does:'The <b>same artifact that closes a customer closes a regulator</b>.'},
+    's-trust':{icon:'cto',eye:'Governance · planned',title:'Trust Center',lede:'The enterprise plumbing, built as we land it.',listLabel:'The gate',list:['SSO / SAML and SCIM','Role-based access control','Audit-log export','Data-flow diagram &amp; DPA/BAA'],does:'This page becomes <b>enterprise sales collateral</b> once shipped.'},
+    'c-round':{icon:'cfo',eye:'Company · capital',title:'Pre-seed · open',lede:'A SAFE with an MFN cap.',listLabel:'What it funds',list:['The MVP','The first paid pilots','A gate to a seed on signed revenue','No priced round'],does:'Capital is sized to <b>reach proof, not to buy headcount</b>.'},
+    'c-why':{icon:'cto',eye:'Company · timing',title:'Why now',lede:'Judgment crossed the threshold.',listLabel:'The convergence',list:['Reasoning models reached expert-analyst output','Multi-agent orchestration moved from demo to deployable','Compliance pressure is rising','The cost of inference is falling'],does:'A multi-agent C-suite <b>was not buildable 24 months ago</b>.'},
+    'c-white':{icon:'cmo',eye:'Company · market',title:'Whitespace',lede:'No one owns the boardroom.',listLabel:'The map',list:['Legal has a winner','Finance-research has a winner','Search has a winner','Board-grade deliberation has none'],does:'The C-suite is the <b>unclaimed adjacency</b> in vertical AI.'},
+    'c-moat':{icon:'cso',eye:'Company · to be earned',title:'The moat',lede:'Defensibility compounds — it isn&rsquo;t shipped.',listLabel:'What compounds',list:['A proprietary corpus of decisions + outcomes','Calibration data no one else has','&ldquo;DELIDEC-sealed&rdquo; as a mark others request','A portfolio-wide standard via PE'],does:'Narrate big; execute narrow — <b>dominate one wedge</b> before going horizontal.'},
+    'h-ask':{icon:'ask',eye:'How it works · 01',title:'Ask a strategic question',lede:'Frame the decision you want clarity on.',listLabel:'Good questions',list:['Fundraise terms','A pricing change','A key hire','A market move'],does:'One clear question in; <b>one defensible memo out</b>.'},
+    'h-inputs':{icon:'inputs',eye:'How it works · 02',title:'Eight specialists analyze',lede:'Each executive runs independent analysis from its own domain — in parallel.',listLabel:'The method',list:['Independent, not averaged','Each with its own framework','Each with citation discipline','Dissent allowed'],does:'Parallel deliberation is why the board sees the <b>trade-off you&rsquo;d miss alone</b>.'},
+    'h-synth':{icon:'synthesis',eye:'How it works · 03',title:'Synthesis. Decision.',lede:'The COO unifies every insight into one recommended path.',listLabel:'The output',list:['Forbidden from collapsing dissent','Confidence banded','Reversal conditions named','You make the final call'],does:'The board advises; <b>you decide</b>.'}
+  };
+
+  function build(m){
+    var h='<div class="modal-head"><span class="gtile" data-icon="'+m.icon+'"></span><div><div class="modal-eye">'+m.eye+'</div><div class="modal-title">'+m.title+'</div></div></div>';
+    h+='<p class="modal-lede">'+m.lede+'</p>';
+    if(m.pillars){h+='<div class="modal-sec">Capability pillars</div><div class="modal-pillars">'+m.pillars.map(function(p){return '<span>'+p+'</span>';}).join('')+'</div>';}
+    if(m.skills){h+='<div class="modal-sec">Competency model</div>'+m.skills.map(function(s){var p=LV[s[1]]||60;return '<div class="modal-skill"><span class="sn">'+s[0]+'</span><span class="track"><span class="fill" data-pct="'+p+'"></span></span><span class="lv">'+s[1]+'</span></div>';}).join('')+'<p class="modal-fine">The standard this chair is built to emulate — drawn from C-suite hiring rubrics. Live capability is validated through our <b>evaluation program</b> (in&nbsp;flight), not asserted.</p>';}
+    if(m.list){h+='<div class="modal-sec">'+(m.listLabel||'Detail')+'</div><ul class="modal-list">'+m.list.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>';}
+    if(m.does){h+='<div class="modal-does">'+m.does+'</div>';}
+    return h;
+  }
+  var modal=document.getElementById('modal'),content=document.getElementById('modal-content');
+  var MEMO_HTML='<div class="modal-head"><svg class="seal-mark" viewBox="0 0 64 64" style="width:72px;height:72px" aria-hidden="true"><use href="#seal-d"/></svg><div><div class="modal-eye">Board memo · sealed · DLD·0xA17E</div><div class="modal-title">A decision you can defend.</div></div></div>'+
+    '<p class="modal-lede">An illustrative output: the recommendation, a confidence band, who concurred and dissented, graded citations, and a tamper-evident seal.</p>'+
+    '<div class="memo" style="cursor:default;margin-top:18px;box-shadow:none;border-color:var(--line)"><div class="memo-bar"><span class="d" style="background:var(--a-clo)"></span><span class="d" style="background:var(--a-cmo)"></span><span class="d" style="background:var(--a-cfo)"></span><span class="lbl"><b>Board memo</b> · sealed</span><span class="ref">DLD·0xA17E</span></div>'+
+    '<div class="memo-body"><div class="memo-q">Question · capital</div>'+
+    '<div class="memo-rec">Should we take the bridge now, or wait two quarters? <em>Take a capped SAFE now — but not at the proposed valuation; re-open only against a signed lead.</em></div>'+
+    '<div class="memo-meta"><div class="conf"><span class="track"><span class="fill"></span></span><span class="n">0.82 · HIGH</span></div><div class="tally"><b class="cc">7 concur</b> · <b class="dc">1 dissent</b></div></div>'+
+    '<div class="memo-dissent"><span class="k">CLO dissents</span><br>Cross-border investor introduces EU disclosure exposure. Below 0.6 confidence on jurisdiction — escalate to counsel before signing.</div>'+
+    '<div class="memo-cites"><div class="cite"><span class="st">★★★★★</span><span><b>Term sheet, §3 liquidation</b> — primary source, current.</span></div><div class="cite"><span class="st">★★★★☆</span><span><b>Comparable round data</b> — sector median, last 2 quarters.</span></div></div>'+
+    '<div class="memo-seal"><svg class="seal-mark" viewBox="0 0 64 64" aria-hidden="true"><use href="#seal-d"/></svg><div class="sx"><div class="s1">DELIDEC-sealed · tamper-evident</div><div class="s2">9f2c a17e dd04 b8e1 6c70 ee23 1a9d 4f08</div></div></div></div></div>'+
+    '<p class="modal-fine">Illustrative — not a real decision. The board produces this memo; a person signs it.</p>';
+  var FORM_HTML='<div class="modal-head"><span class="gtile" data-icon="ask"></span><div><div class="modal-eye">Request access</div><div class="modal-title">Bring the board to your decision.</div></div></div>'+
+    '<p class="modal-lede">Tell us the decision you&rsquo;re facing — we&rsquo;ll reply within one business day with a worked memo on it.</p>'+
+    '<form id="reqForm" novalidate style="margin-top:18px">'+
+    '<div class="field"><label>Name</label><input name="name" type="text" autocomplete="name"><span class="err" data-for="name"></span></div>'+
+    '<div class="field"><label>Work email</label><input name="email" type="email" autocomplete="email"><span class="err" data-for="email"></span></div>'+
+    '<div class="field"><label>Company</label><input name="company" type="text" autocomplete="organization"><span class="err" data-for="company"></span></div>'+
+    '<div class="field"><label>The decision you&rsquo;re facing</label><textarea name="decision"></textarea></div>'+
+    '<button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center">Request access <span class="ar">→</span></button>'+
+    '<p class="form-foot">By submitting you accept our <a data-route="privacy" style="color:var(--green-700)">privacy notice</a>. Prefer email? <a href="mailto:boris@delidec.com" style="color:var(--green-700)">boris@delidec.com</a>.</p></form>';
+  function injectIcons(){content.querySelectorAll('[data-icon]').forEach(function(el){el.innerHTML='<svg viewBox="0 0 48 48"><use href="#ic-'+el.getAttribute('data-icon')+'"/></svg>';});}
+  function show(){modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';var cb=modal.querySelector('.modal-close');if(cb)setTimeout(function(){try{cb.focus();}catch(_){}},80);}
+  function wireForm(){var f=content.querySelector('#reqForm');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();var d={};['name','email','company','decision'].forEach(function(k){d[k]=(f.elements[k].value||'').trim();});var ok=true;f.querySelectorAll('.err').forEach(function(x){x.textContent='';});function er(k,m){var s=f.querySelector('.err[data-for="'+k+'"]');if(s)s.textContent=m;ok=false;}if(!d.name)er('name','Required');if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email))er('email','Enter a valid work email');if(!d.company)er('company','Required');if(!ok)return;var FORMSPREE_ID='YOUR_FORMSPREE_ID';/* ← paste the id from your Formspree form (formspree.io → New form → the part after /f/). Until set, submissions open the visitor's mail client. */
+    var ENDPOINT=(FORMSPREE_ID&&FORMSPREE_ID.indexOf('YOUR_')<0)?'https://formspree.io/f/'+FORMSPREE_ID:'';
+    var done=function(){content.innerHTML='<div class="form-success"><div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7"/></svg></div><div class="modal-title" style="font-size:24px">Thanks — we&rsquo;ll be in touch.</div><p class="modal-lede">A human replies within one business day.</p></div>';if(window.plausible)plausible('Request Access');};
+    var fallback=function(){window.location.href='mailto:boris@delidec.com?subject='+encodeURIComponent('DELIDEC access — '+d.company)+'&body='+encodeURIComponent('Name: '+d.name+'\nEmail: '+d.email+'\nCompany: '+d.company+'\nDecision: '+d.decision);done();};
+    if(ENDPOINT){var fd=new FormData();Object.keys(d).forEach(function(k){fd.append(k,d[k]);});fd.append('_subject','DELIDEC access — '+d.company);fetch(ENDPOINT,{method:'POST',headers:{'Accept':'application/json'},body:fd}).then(function(r){if(r.ok)done();else fallback();}).catch(fallback);}else{fallback();}});}
+  function buildArticle(a){
+    var h='<div class="article" style="--cc:var('+a.cc+')">';
+    h+='<div class="a-author"><span class="av" data-icon="'+a.ck+'"></span><span class="a-id"><span class="nm">'+a.role+'</span><span class="hd">'+(a.name||a.lens)+'</span></span></div>';
+    h+='<h2>'+a.title+'</h2>';
+    h+='<div class="a-meta"><span>DELIDEC Research</span><span>'+a.date+'</span><span>Paper '+a.idx+' of 8</span></div>';
+    h+='<p class="a-abstract">'+a.abstract+'</p>';
+    if(a.body){h+='<div class="a-body">'+a.body+'</div>';}
+    else{h+='<div class="a-soon"><b>Full paper in preparation.</b> The abstract above is published; the complete text is being written and reviewed on our daily cadence. Want this one prioritized? <a href="mailto:boris@delidec.com">Tell us</a>.</div>';}
+    return h+'</div>';
+  }
+  function open(key){
+    var panel=modal.querySelector('.modal-panel');if(panel)panel.classList.remove('wide');
+    if(key==='memo'){content.innerHTML=MEMO_HTML;injectIcons();show();return;}
+    if(key==='request'){content.innerHTML=FORM_HTML;injectIcons();wireForm();show();return;}
+    if(key.indexOf('art-')===0){var arts=(window.DLD_RESEARCH&&window.DLD_RESEARCH.articles)||[],a=null;for(var i=0;i<arts.length;i++){if(arts[i].id===key){a=arts[i];break;}}if(!a)return;content.innerHTML=buildArticle(a);injectIcons();if(panel)panel.classList.add('wide');show();if(panel)panel.scrollTop=0;if(window.plausible)plausible('Read Paper',{props:{paper:key}});return;}
+    var m=MODALS[key];if(!m)return;content.innerHTML=build(m);injectIcons();show();
+    requestAnimationFrame(function(){requestAnimationFrame(function(){content.querySelectorAll('.fill').forEach(function(f){f.style.width=f.getAttribute('data-pct')+'%';});});});}
+  function close(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+  document.addEventListener('click',function(e){var t=e.target.closest('[data-modal]');if(t){e.preventDefault();open(t.getAttribute('data-modal'));return;}if(e.target.closest('[data-close]'))close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+
+  /* custom animated 'd' cursor (desktop, motion-on) */
+  if(matchMedia('(pointer:fine)').matches && matchMedia('(hover:hover)').matches && !reduce){
+    document.documentElement.classList.add('dcur');
+    var d=document.querySelector('.dcursor');
+    if(d){
+      addEventListener('pointermove',function(e){d.style.transform='translate3d('+(e.clientX-3)+'px,'+(e.clientY-5)+'px,0)';},{passive:true});
+      addEventListener('pointerover',function(e){var t=e.target&&e.target.closest?e.target.closest('a,button,[data-modal],[data-route],input,textarea,.term-send'):null;d.classList.toggle('hot',!!t);});
+      addEventListener('pointerdown',function(){d.classList.add('down');},{passive:true});
+      addEventListener('pointerup',function(){d.classList.remove('down');},{passive:true});
+      addEventListener('mouseleave',function(){d.style.opacity='0';});
+      addEventListener('mouseenter',function(){d.style.opacity='';});
+    }
+  }
+})();
+</script>
+<script>
+(function(){
+  var b=document.getElementById('burger');
+  if(b)b.addEventListener('click',function(){var o=document.documentElement.classList.toggle('menu-open');b.setAttribute('aria-expanded',o?'true':'false');});
+  document.addEventListener('click',function(e){if(e.target.closest('[data-route],[data-modal]')){document.documentElement.classList.remove('menu-open');if(b)b.setAttribute('aria-expanded','false');}});
+  // theme toggle (default dark; persisted)
+  var root=document.documentElement;
+  function metaTheme(t){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='light'?'#EDF1EC':'#070F0C');}
+  try{var st=localStorage.getItem('dld-theme');if(st)root.setAttribute('data-theme',st);}catch(e){}
+  if(window.__tessTheme)window.__tessTheme(root.getAttribute('data-theme')!=='light');
+  metaTheme(root.getAttribute('data-theme')||'dark');
+  function applyTheme(t){root.setAttribute('data-theme',t);try{localStorage.setItem('dld-theme',t);}catch(e){}if(window.__tessTheme)window.__tessTheme(t!=='light');metaTheme(t);}
+  var tb=document.getElementById('themeBtn');
+  if(tb)tb.addEventListener('click',function(){applyTheme(root.getAttribute('data-theme')==='light'?'dark':'light');});
+  // cookie notice (essential only — remembers choice)
+  var ck=document.getElementById('cookie');
+  function ckSeen(){try{return localStorage.getItem('dld-cookie');}catch(e){return 1;}}
+  if(ck&&!ckSeen())setTimeout(function(){ck.classList.add('show');},1500);
+  function ckClose(v){try{localStorage.setItem('dld-cookie',v);}catch(e){}if(ck)ck.classList.remove('show');}
+  var ca=document.getElementById('ckAccept'),cd=document.getElementById('ckDecline');
+  if(ca)ca.addEventListener('click',function(){ckClose('all');});
+  if(cd)cd.addEventListener('click',function(){ckClose('essential');});
+})();
+</script>
+</body>
+</html>
