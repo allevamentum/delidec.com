@@ -515,30 +515,9 @@ html.menu-open .mobile-menu a[data-route]{opacity:1;transform:none}
 .article .a-body ul{margin:8px 0 14px;padding:0;list-style:none}
 .article .a-body li{position:relative;padding-left:20px;margin:0 0 8px;font-family:var(--sans);font-size:15px;line-height:1.62;color:var(--ink-2)}
 .article .a-body li::before{content:"";position:absolute;left:2px;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--green-500)}
-/* ───────────────── launch announcement bar ───────────────── */
-.launchbar{position:fixed;top:0;left:0;right:0;z-index:95;height:38px;display:flex;align-items:center;justify-content:center;gap:14px;padding:0 14px;background:linear-gradient(90deg,var(--green-700),var(--green-600));color:#fff;font-family:var(--mono);font-size:12px;letter-spacing:.02em;box-shadow:0 2px 14px -5px rgba(10,55,36,.55)}
-html:not(.lbar) .launchbar{display:none}
-html.lbar body{padding-top:38px}
-html.lbar .nav{top:38px}
-html.lbar #progress{top:38px}
-.launchbar .lb-msg{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-.launchbar b{color:#fff;font-weight:700}
-.lb-ic{opacity:.92}.lb-days{opacity:.85;margin-left:2px}
-.lb-cta{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);color:#fff;padding:4px 12px;border-radius:99px;font-weight:700;flex:none;transition:background .2s}
-.lb-cta:hover{background:rgba(255,255,255,.3)}
-.lb-x{color:rgba(255,255,255,.82);font-size:12px;line-height:1;flex:none;padding:5px}.lb-x:hover{color:#fff}
-@media(max-width:640px){.launchbar{font-size:11px;gap:10px}.lb-days{display:none}}
-@media(max-width:430px){.lb-cta{display:none}}
 </style>
 </head>
 <body>
-
-<div class="launchbar" id="launchBar" role="region" aria-label="Launch announcement">
-  <span class="lb-msg"><span class="lb-ic">◷</span> Launching <b>July 8, 2026</b> — <b>50% off</b> for founding members<span class="lb-days" id="lbDays"></span></span>
-  <a class="lb-cta" href="https://delidec.ai/" target="_blank" rel="noopener">Claim 50% <span class="ar">→</span></a>
-  <button class="lb-x" id="launchClose" type="button" aria-label="Dismiss announcement">✕</button>
-</div>
-<script>(function(){try{if(localStorage.getItem('dd_lbar')==='off')return;}catch(e){}var days=Math.ceil((new Date(2026,6,8)-new Date())/864e5);if(days<=0)return;var root=document.documentElement;root.classList.add('lbar');function go(){var d=document.getElementById('lbDays');if(d)d.textContent=' · '+days+' day'+(days===1?'':'s')+' to go';var x=document.getElementById('launchClose');if(x)x.addEventListener('click',function(){root.classList.remove('lbar');try{localStorage.setItem('dd_lbar','off');}catch(e){}});}document.readyState!=='loading'?go():document.addEventListener('DOMContentLoaded',go);})();</script>
 
 <div id="progress"></div>
 <canvas id="tess" aria-hidden="true"></canvas>
